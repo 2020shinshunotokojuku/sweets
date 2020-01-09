@@ -1,4 +1,5 @@
 class Admin::ItemsController < ApplicationController
+
   def top
   end
 
@@ -10,4 +11,5 @@ class Admin::ItemsController < ApplicationController
 
   def edit
   end
+
 end
