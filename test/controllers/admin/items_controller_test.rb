@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class Admin::ItemsControllerTest < ActionDispatch::IntegrationTest
+<<<<<<< HEAD
   test "should get top" do
     get admin_items_top_url
     assert_response :success
@@ -21,4 +22,9 @@ class Admin::ItemsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+=======
+  # test "the truth" do
+  #   assert true
+  # end
+>>>>>>> future
 end
