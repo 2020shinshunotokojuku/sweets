@@ -1,2 +1,20 @@
-<h1>ShippingAddresses#edit</h1>
-<p>Find me in app/views/shipping_addresses/edit.html.erb</p>
+<h1>配送先編集ページ</h1> 
+
+
+<%= form_for(@shipping_address) do |f|%>
+	<h2>配送先編集</h2>
+	<p>郵便番号</p>
+	<%= f.number_field :post_number %>
+
+	<p>住所</p>
+	<%= f.text_field :address %>
+
+	<p>宛先</p>
+	<%= f.text_field :name %>
+
+	<%= f.submit '編集する' %>
+
+<% end %>
+
+<!-- 下記に「編集する」ボタンを設置 -->
+<!-- ボタンを押すと、「配送先一覧」に遷移するß -->
