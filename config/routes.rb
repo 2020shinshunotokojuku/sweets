@@ -48,8 +48,11 @@ devise_for :admins, controllers:{
   #get 'shipping_addresses/edit', to: 'shipping_addresses#edit'
   #patch 'shipping_addresses', to: 'shipping_addresses#update'
   #put 'shipping_addresses', to: 'shipping_addresses#update'
-    namespace :admin do
+  namespace :admin do
+
     resources :items
+    resources :genres, only: [:index, :create, :edit, :update]
+
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
