@@ -69,3 +69,4 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 # gem "pry-byebug"   今後付使う予定
 # gem "ransack"
+# gem "pry-rails"

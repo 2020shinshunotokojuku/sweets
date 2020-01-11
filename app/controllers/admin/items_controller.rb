@@ -4,7 +4,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
-    @genre=Genre.new
+    @items=Item.new
   end
 
   def new

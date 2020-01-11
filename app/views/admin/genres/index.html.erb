@@ -3,9 +3,9 @@
 
 <%= form_for(@genre,url:"/admin/genres") do |f| %>
 <%= f.text_field :name %>
-<%= check_box_tag :is_valid %>
+<%= f.radio_button :is_valid, true %>
 <%= label_tag :is_valid, "有効" %>
-<%= check_box_tag :is_valid  %>
+<%= f.radio_button :is_valid, false %>
 <%= label_tag :is_vaild,"無効" %>
 <%= f.submit "追加" %>
 <% end %>
@@ -28,7 +28,6 @@
 				<td>
 					<%if genre.is_valid==true %>
 					<p>有効</p>
-					<%= genre.is_valid %></td>
 					<% else %>
 					<p>無効<p>
 					<%end%>
