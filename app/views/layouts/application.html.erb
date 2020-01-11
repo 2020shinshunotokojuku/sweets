@@ -9,29 +9,40 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 <body>
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <h4 class="nav-title">
-            ながのSWEETS
-          </h4>
-
-        </div>
-
-        <div class="collapse navbar-collapse" id="navbarEexample">
-          <ul class="nav navbar-nav navbar-right">
-              <li><%= link_to 'Home', root_path ,class: "glyphicon glyphicon-home home" %></li>
-              <li></li>
-              <li><%= link_to ' sign up',new_customer_registration_path,class: "glyphicon glyphicon-edit edit" %></li>
-              <li><%= link_to ' login',new_customer_session_path,class: "glyphicon glyphicon-log-in login" %></li>
-
-          </ul>
+    <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="container">
+         <div class="row">
+          <div class="bg-dark text-white">
+              <span class="text_color navbar-left big">NAGANO SWEETS</span>
+              <!-- <header class="navbar navbar-fixed-top navbar-inverse"> -->
+              <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
+              <!-- サインインしている場合の表示 -->
+               <% if customer_signed_in? %>
+               <!-- logoutを表示 -->
+                <li class="">
+                  <%= link_to " logout", destroy_customer_session_path, method: :delete, class:"glyphicon glyphicon-log-out logout" %>
+                </li>
+                <li>
+                  <%= link_to 'Home', root_path ,class:"glyphicon glyphicon-home home" %>
+                </li>
+                <li class="">
+                  <%= link_to "$カート", cart_contents_path,class:"glyphicon glyphicon-cart cart" %>
+                </li>
+                <li class="">
+                  <%= link_to "マイページ", customers_path,class:"glyphicon glyphicon-cart cart" %>
+                </li>
+                <% else %>
+                <!-- sign upを表示 -->
+                <li class="">
+                  <%= link_to " sign up", new_customer_registration_path, class:"glyphicon glyphicon-edit sign_up" %>
+                </li>
+                <!-- loginを表示 -->
+                <li class="">
+                  <%= link_to " login", new_customer_session_path, class:"glyphicon glyphicon-log-in sign_in" %>
+                </li>
+               <% end %>
+            </ul>
+          </div>
         </div>
       </div>
     </nav>
