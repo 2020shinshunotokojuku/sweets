@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-
-devise_for :admins, controllers:{
-  sessions:      'admins/sessions',
-  passwords:     'admins/passwords',
-  registrations: 'admins/registrations'
+  devise_for :admins, controllers: {
+    sessions:      'admins/sessions',
+    passwords:     'admins/passwords',
+    registrations: 'admins/registrations'
   }
+
   devise_for :customers, controllers: {
   sessions:      'customers/sessions',
   passwords:     'customers/passwords',
@@ -48,12 +48,14 @@ devise_for :admins, controllers:{
   #get 'shipping_addresses/edit', to: 'shipping_addresses#edit'
   #patch 'shipping_addresses', to: 'shipping_addresses#update'
   #put 'shipping_addresses', to: 'shipping_addresses#update'
-    namespace :admin do
-    resources :items
+    namespace :admins do
+      resources :items
+      get '/top' => 'items#top'
+      resources :histories
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  get 'admin/items/top' => 'admin/items#top'
+  # get 'admin/items/top' => 'admin/items#top'
 
   get 'admin/customers' => 'admin/customers#index'
   get 'admin/customers/:id' => 'admin/customers#show'
