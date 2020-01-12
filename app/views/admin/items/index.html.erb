@@ -1,0 +1,23 @@
+<h1>管理者商品一覧ページ</h1>
+<%= form_for(@genre) do |f| %>
+
+<p>商品名</p>
+<%= f.text_field :name %>
+
+<%= f.submit "新規登録" %>
+<% end %>
+<table>
+	<thead>
+	<tr>
+		<th>商品ID</th>
+		<th>商品名</th>
+		<th>税抜き価格</th>
+		<th>ジャンル</th>
+		<th>ステータス</th>
+	</tr>
+</thead>
+</table>
+<tbody>
+	<tr>
+	</tr>
+</tbody>

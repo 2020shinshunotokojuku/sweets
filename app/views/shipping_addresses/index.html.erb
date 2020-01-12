@@ -1,2 +1,44 @@
-<h1>ShippingAddresses#index</h1>
-<p>Find me in app/views/shipping_addresses/index.html.erb</p>
+<!DOCTYPE html>
+<html>
+  <meta charset="UTF-8">
+  <head><h1>配送先一覧画面ページ</h1></head>
+
+	<body>
+		<!-- form_for部分 -->
+		<%= form_for(@shipping_address) do |f|%>
+			<h2>配送先登録/一覧</h2>
+			<p>郵便番号</p>
+			<%= f.number_field :post_number %>
+
+			<p>住所</p>
+			<%= f.text_field :address %>
+
+			<p>宛先</p>
+			<%= f.text_field :name %>
+
+			<%= f.submit '登録する' %>
+
+		<% end %>
+
+
+		<!-- 下記に「配送先編集ページ」で保存された情報を下記に表示する -->
+
+		<% @shipping_addresses.each do |shipping_address| %>
+
+			<p>郵便番号</p>
+			<span><%= shipping_address.post_number %></span>
+
+			<p>住所</p>
+			<span><%= shipping_address.address %></span>
+
+			<p>宛名</p>
+			<span><%= shipping_address.name %></span>
+
+			<%= link_to "編集する", edit_shipping_address_path(shipping_address.id) %>
+			<%= link_to "削除する", shipping_address_path(shipping_address.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+
+		<% end %>
+	</body>
+</html>
+
+<!-- 「編集する」ボタン「削除」ボタンの設置 -->
