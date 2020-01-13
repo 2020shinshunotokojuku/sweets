@@ -1,13 +1,13 @@
-<h1>商品　詳細画面</h1>
-
-<h4>商品名</h4>
-
-<h4>商品説明</h4>
-
-<h4>ジャンル</h4>
-
-<h4>税込み価格（税抜き価格）</h4>
-
-<h4>販売ステータス</h4>
-
-<h1>編集する</h1>
+<div class="container">
+	<h1>商品　詳細画面</h1>
+	<h4>商品名</h4>
+	<%= @item.item_name %>
+	<h4>商品説明</h4>
+	<%= @item.dess_item %>
+	<h4>ジャンル</h4>
+	<h4>税込み価格（税抜き価格）</h4>
+	<%= @item.without_tax %>
+	<h4>販売ステータス</h4>
+	<%= @item.is_sale %>
+	<p><%=link_to "編集する",edit_admin_item_path,class:"btn btn-primary" %></p>
+</div>
