@@ -5,7 +5,7 @@
 <p>商品説明</p><%= f.text_area :dess_item %>
 <p>ジャンル</p><%= f.collection_select(:genre_id, Genre.all, :id, :name) %>
 <p>税抜き価格</p>
-<%= f.text_field :without_tax %>
+<%= f.number_field :without_tax %>
 <span>円</span>
 <p>販売ステータス</p>
 <%= f.select :is_sale,[["販売中",true],["売り切れ",false]] %>
