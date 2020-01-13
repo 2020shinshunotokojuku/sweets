@@ -57,7 +57,7 @@ devise_for :admins, controllers:{
 
     resources :genres, only: [:index, :create, :edit, :update]
 
-  end
+  # end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   #get 'admin/items/top' => 'admin/items#top'
