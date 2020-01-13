@@ -1,19 +1,22 @@
 <h1>商品　新規登録画面</h1>
-<div></div>
-<p>画像選択画面</p>
 
-<%= form_for(@item) do |f| %>
+
+<%= form_for(@item,url:admin_items_path) do |f| %>
+<%= f.attachment_field :image_id %>
+
 
 <p>商品名</p>
 <%= f.text_field :item_name %>
 <p>商品説明</p>
 <%= f.text_area :dess_item %>
 <p>ジャンル</p>
+<%= f.collection_select(:genre_id, Genre.all, :id, :name) %>
 <div><p>ステータスバー</p></div>
-<p>税抜き価格</p><span>円</span>
+<p>税抜き価格</p>
 <%= f.text_field :without_tax %>
+<span>円</span>
 <p>販売ステータス</p>
-<div><p>販売ステータス</p></div>
+<%= f.select :is_sale,[["販売中",true],["売り切れ",false]] %>
 
 <%= f.submit "新規登録" %>
 <% end %>
