@@ -11,6 +11,7 @@ class Customer < ApplicationRecord
    validates :post_number, presence: true
    validates :address, presence: true
    validates :tel, presence: true
+
   def update_without_current_password(params, *options)
     params.delete(:current_password)
 
@@ -23,3 +24,10 @@ class Customer < ApplicationRecord
     result
   end
 end
+
+
+   has_many :shipping_addresses, dependent: :destroy
+   has_many :histories, dependent: :destroy
+   has_many :cart_contents, dependent: :destroy
+end
+
