@@ -13,7 +13,7 @@
       <div class="container">
          <div class="row">
           <div class="bg-dark text-white">
-              <span class="text_color navbar-left big">NAGANO SWEETS</span>
+              <a href="/" class="navbar-barand text-white font-bold-weight">ながのCAKE</a>
               <!-- <header class="navbar navbar-fixed-top navbar-inverse"> -->
               <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
               <!-- サインインしている場合の表示 -->
@@ -23,13 +23,13 @@
                   <%= link_to " logout", destroy_customer_session_path, method: :delete, class:"glyphicon glyphicon-log-out logout" %>
                 </li>
                 <li>
-                  <%= link_to 'Home', root_path ,class:"glyphicon glyphicon-home home" %>
+                  <%= link_to ' Home', root_path ,class:"glyphicon glyphicon-home home" %>
                 </li>
                 <li class="">
-                  <%= link_to "$カート", cart_contents_path,class:"glyphicon glyphicon-cart cart" %>
+                  <%= link_to "$ カート", cart_contents_path,class:"glyphicon glyphicon-cart cart" %>
                 </li>
                 <li class="">
-                  <%= link_to "マイページ", customers_path,class:"glyphicon glyphicon-cart cart" %>
+                  <%= link_to " マイページ", customers_path,class:"glyphicon glyphicon-log-in login" %>
                 </li>
                 <% else %>
                 <!-- sign upを表示 -->
@@ -39,6 +39,9 @@
                 <!-- loginを表示 -->
                 <li class="">
                   <%= link_to " login", new_customer_session_path, class:"glyphicon glyphicon-log-in sign_in" %>
+                </li>
+                <li class="">
+                  <%= link_to " About", about_items_path, class:"glyphicon glyphicon-apple" %>
                 </li>
                <% end %>
             </ul>
