@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-devise_for :admins, controllers:{
-  sessions:      'admins/sessions',
-  passwords:     'admins/passwords',
-  registrations: 'admins/registrations'
+devise_for :admin, controllers:{
+  sessions:      'admin/sessions',
+  passwords:     'admin/passwords',
+  registrations: 'admin/registrations'
   }
 
   get '/customers_edit' => 'customers#edit', as: :edit_customers
@@ -79,3 +79,4 @@ devise_for :admins, controllers:{
 
   #get 'admin/histories' => 'admin/histories#index'
   #get 'admin/histories/show' => 'admin/histories#show'
+end
