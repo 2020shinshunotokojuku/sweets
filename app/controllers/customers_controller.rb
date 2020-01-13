@@ -5,15 +5,22 @@ class CustomersController < ApplicationController
   end
 
   def edit
+    @customer = current_customer
   end
 
   def update
+     customer = Customer.find(current_customer.id)
+     customer.update(customer_params)
+     redirect_to root_path
   end
 
   def withdraw
   end
 
   def destory
+    @customer = current_customer
+    @customer.destroy
+    redirect_to root_path
   end
 
 private

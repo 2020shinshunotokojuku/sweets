@@ -19,4 +19,7 @@ class ItemsController < ApplicationController
   # 	params.require(:items).permit(:item_name, :without_tax)
   # end
 
+  def about
+  end
+
 end

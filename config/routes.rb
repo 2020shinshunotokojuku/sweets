@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
 
-devise_for :admins, controllers:{
-  sessions:      'admins/sessions',
-  passwords:     'admins/passwords',
-  registrations: 'admins/registrations'
+devise_for :admin, controllers:{
+  sessions:      'admin/sessions',
+  passwords:     'admin/passwords',
+  registrations: 'admin/registrations'
   }
+
+  get '/customers_edit' => 'customers#edit', as: :edit_customers
+  patch '/customers' => 'customers#update', as: :customer
+
   devise_for :customers, controllers: {
   sessions:      'customers/sessions',
   passwords:     'customers/passwords',
@@ -16,13 +20,21 @@ devise_for :admins, controllers:{
 
 #コントローラーごとのルーティング
 #items
-  resources :items
+  resources :items do
+      collection do
+      get 'about'
+    end
+  end
   #get 'items', to: 'items#index'
   #get 'items/:id', to: 'items#show'
   #root toで設定しているため必要ない
   #get '', to: 'items#top'
 #customers
-  resource :customers
+  resource :customers do
+      collection do
+      get 'withdraw'
+    end
+  end
   #get 'customers', to: 'customers#show'
   #get 'customers/edit', to: 'customers#edit'
   #patch 'customers', to: 'customers#update'
@@ -52,12 +64,11 @@ devise_for :admins, controllers:{
 
     resources :items
     resources :histories
-  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
     resources :genres, only: [:index, :create, :edit, :update]
 
-  # end
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   #get 'admin/items/top' => 'admin/items#top'
@@ -70,3 +81,4 @@ devise_for :admins, controllers:{
   #get 'admin/histories/show' => 'admin/histories#show'
 
 end
+

@@ -1,42 +1,39 @@
-<h1>ジャンル追加・一覧画面</h1>
-<p>ジャンル</p>
-
-<%= form_for(@genre,url:"/admin/genres") do |f| %>
-<%= f.text_field :name %>
-<%= f.radio_button :is_valid, true %>
-<%= label_tag :is_valid, "有効" %>
-<%= f.radio_button :is_valid, false %>
-<%= label_tag :is_vaild,"無効" %>
-<%= f.submit "追加" %>
-<% end %>
-
-<div>
-<table class="table table-striped">
-	<thead>
-		<tr>
-			<th>ジャンル</th>
-			<th>状態</th>
-			<th>edit</th>
-		</tr>
-	</thead>
-		<tbody>
-			<% @genres.each do |genre| %>
+<div class="container">
+	<h2>ジャンル追加・一覧画面</h2>
+	<span>ジャンル</span>
+	<%= form_for(@genre,url:"/admin/genres") do |f| %>
+	<%= f.text_field :name %>
+	<%= f.radio_button :is_valid, true %>
+	<%= label_tag :is_valid, "有効" %>
+	<%= f.radio_button :is_valid, false %>
+	<%= label_tag :is_vaild,"無効" %>
+	<%= f.submit "追加",class:"btn btn-primary" %>
+	<% end %>
+	<table class="table table-striped">
+		<thead>
 			<tr>
-				<td>
-					<%= genre.name %>
-				</td>
+				<th>ジャンル</th>
+				<th>状態</th>
+				<th>edit</th>
+			</tr>
+		</thead>
+			<tbody>
+				<% @genres.each do |genre| %>
+				<tr>
+					<td>
+						<%= genre.name %>
+					</td>
 				<td>
 					<%if genre.is_valid==true %>
-					<p>有効</p>
+						<p>有効</p>
 					<% else %>
-					<p>無効<p>
+						<p>無効<p>
 					<%end%>
 				<td>
-					<%= link_to "編集する",edit_admin_genre_path(genre.id) %>
+					<%= link_to "編集する",edit_admin_genre_path(genre.id),class:"btn btn-primary" %>
 				</td>
 			</tr>
 		</tbody>
 		<% end %>
 	</table>
 </div>
-<p>Find me in app/views/admin/genres/index.html.erb</p>
