@@ -13,9 +13,11 @@ class HistoriesController < ApplicationController
 
   def index
     @customer = current_customer
-    @histories = History.all
+    @histories = @customer.histories
   end
 
   def show
+    @history = History.find(params[:id])
+    @history_detail = @history.history_details
   end
 end
