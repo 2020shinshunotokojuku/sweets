@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     registrations: 'admins/registrations'
   }
 
+  get '/customers_edit' => 'customers#edit', as: :edit_customers
+  patch '/customers' => 'customers#update', as: :customer
+
   devise_for :customers, controllers: {
   sessions:      'customers/sessions',
   passwords:     'customers/passwords',
@@ -16,13 +19,21 @@ Rails.application.routes.draw do
 
 #コントローラーごとのルーティング
 #items
-  resources :items
+  resources :items do
+      collection do
+      get 'about'
+    end
+  end
   #get 'items', to: 'items#index'
   #get 'items/:id', to: 'items#show'
   #root toで設定しているため必要ない
   #get '', to: 'items#top'
 #customers
-  resource :customers
+  resource :customers do
+      collection do
+      get 'withdraw'
+    end
+  end
   #get 'customers', to: 'customers#show'
   #get 'customers/edit', to: 'customers#edit'
   #patch 'customers', to: 'customers#update'
@@ -57,6 +68,8 @@ Rails.application.routes.draw do
 
   # get 'admin/items/top' => 'admin/items#top'
 
+
+    
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
     resources :genres, only: [:index, :create, :edit, :update]
@@ -73,5 +86,7 @@ Rails.application.routes.draw do
 
   #get 'admin/histories' => 'admin/histories#index'
   #get 'admin/histories/show' => 'admin/histories#show'
+<<<<<<< HEAD
 
 end
+
