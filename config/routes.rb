@@ -48,7 +48,7 @@ Rails.application.routes.draw do
   #get 'shipping_addresses/edit', to: 'shipping_addresses#edit'
   #patch 'shipping_addresses', to: 'shipping_addresses#update'
   #put 'shipping_addresses', to: 'shipping_addresses#update'
-    namespace :admins do
+    namespace :admin do
       resources :items
       get '/top' => 'items#top'
       resources :histories
