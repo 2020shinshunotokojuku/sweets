@@ -86,7 +86,6 @@ Rails.application.routes.draw do
 
   #get 'admin/histories' => 'admin/histories#index'
   #get 'admin/histories/show' => 'admin/histories#show'
-<<<<<<< HEAD
 
 end
 
