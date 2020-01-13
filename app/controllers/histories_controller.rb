@@ -12,6 +12,8 @@ class HistoriesController < ApplicationController
   end
 
   def index
+    @customer = current_customer
+    @histories = History.all
   end
 
   def show
