@@ -23,7 +23,6 @@ class Customer < ApplicationRecord
     clean_up_passwords
     result
   end
-end
 
 
    has_many :shipping_addresses, dependent: :destroy

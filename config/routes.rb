@@ -79,3 +79,4 @@ devise_for :admins, controllers:{
 
   #get 'admin/histories' => 'admin/histories#index'
   #get 'admin/histories/show' => 'admin/histories#show'
+end
