@@ -1,11 +1,9 @@
 <!-- 下記は「ジャンル検索」枠に表示させる -->
 
-<h2>ジャンル検索</h2>
+<h3>ジャンル検索</h3>
 
-<p>ケーキ</p>
+<% @genres.each do |genre| %>
 
-<p>焼き菓子</p>
+<%= link_to genre.name, items_path(id: genre.id) %>
 
-<p>プリン</p>
-
-<p>キャンディ</p>
+<% end %>
