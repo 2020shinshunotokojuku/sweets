@@ -1,25 +1,33 @@
 class ItemsController < ApplicationController 
 
   def index
-  	# @items = Item.all
-  	# @item_names = Item.select("item_name")
-  	# @without_taxs = Item.select("without_tax")
-  	@items = Item.all
+  	if params[:id]
+	  	@items = Item.where(genre_id: params[:id].to_i)
+	  	@genre = Genre.find(params[:id])
+	  else
+	  	@items = Item.all
+	  end
+	  @genres = Genre.all
   end
 
   def show
+  	@item = Item.find(params[:id])
   end
 
   def top
+  	@items = Item.all
+  	@genres = Genre.all
   end
+
+  def about
+  end
+
+
 
   private
 
-  # def items_params
-  # 	params.require(:items).permit(:item_name, :without_tax)
-  # end
-
-  def about
+  def item_params
+  	params.require(:item).permit(:image, :item_name, :dess_item, :without_tax)
   end
 
 end
