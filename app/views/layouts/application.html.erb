@@ -17,7 +17,24 @@
               <!-- <header class="navbar navbar-fixed-top navbar-inverse"> -->
               <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
               <!-- サインインしている場合の表示 -->
-               <% if customer_signed_in? %>
+               <% if admin_signed_in? %>
+
+                <li class="">
+                  <%= link_to " logout", destroy_admin_session_path, method: :delete, class:"glyphicon glyphicon-log-out logout" %>
+                </li>
+                <li class="">
+                  <%= link_to "会員一覧", admin_customers_path,class:"glyphicon glyphicon-cart cart" %>
+                </li>
+                <li class="">
+                  <%= link_to "ジャンル一覧", admin_genres_path,class:"glyphicon glyphicon-cart cart" %>
+                </li>
+                <li class="">
+                  <%= link_to "注文履歴一覧", admin_histories_path,class:"glyphicon glyphicon-cart cart" %>
+                </li>
+                <li class="">
+                  <%= link_to "商品一覧", admin_items_path,class:"glyphicon glyphicon-cart cart" %>
+                </li>
+               <% elsif customer_signed_in? %>
                <!-- logoutを表示 -->
                 <li class="">
                   <%= link_to " logout", destroy_customer_session_path, method: :delete, class:"glyphicon glyphicon-log-out logout" %>
@@ -42,6 +59,9 @@
                 </li>
                 <li class="">
                   <%= link_to " About", about_items_path, class:"glyphicon glyphicon-apple" %>
+                </li>
+                <li class="">
+                  <%= link_to " logout", destroy_admin_session_path, method: :delete, class:"glyphicon glyphicon-log-out logout" %>
                 </li>
                <% end %>
             </ul>

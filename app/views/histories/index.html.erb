@@ -22,7 +22,7 @@
             	<%= history.address %>
             </th>
             <th>
-            	注文商品
+            	<%= @history_details.quantity%>
             </th>
             <th>
                 <%= history.total_fee %>
@@ -31,9 +31,9 @@
                 <%= history.order_status %>
             </th>
             <th>
-                <%= link_to (history) do %>
+                <%= link_to (history),class: “btn btn-primary” %>
             </th>
         </tr>
     </tbody>
-    <% end %>
+   <% end %>
 </table>
