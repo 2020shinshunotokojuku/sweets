@@ -1,17 +1,24 @@
-<h1>ECサイト側の商品一覧ページ</h1>
+<h1>ECサイト側の商品一覧ページ</h1> 
 
 <!-- 下記は「ジャンル検索」枠に表示させる -->
-
 <%= render 'genre_search'%>
 
 
 
 
 <h2>ケーキ</h2>
+<!-- テーブルのレコード数を取得する -->
 <p>全○件</p>
 
 
 <!-- 下記に「商品画像」「商品名」「金額」を4列で表示させる -->
+<% @items.each do |item| %>
+	<!-- <span><%= item.image%></span><br> -->
+	<span><%= attachment_image_tag item, :image, :fill, 300, 200%></span><br>
 
+	<span><%= item.item_name%></span><br>
+
+	<span><%= item.without_tax%><%= "  円"%></span><br>
+<% end %>
 
 <!-- 表示件数が増えた場合に切り替えができるようにする -->

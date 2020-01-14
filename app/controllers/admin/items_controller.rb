@@ -20,6 +20,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def edit
+    # binding.pry
     @item=Item.find(params[:id])
   end
   def update
@@ -30,6 +31,6 @@ class Admin::ItemsController < ApplicationController
 
   private
   def  item_params
-  params.require(:item).permit(:item_name, :dess_item, :image, :is_sale, :genre_id )
+  params.require(:item).permit(:item_name, :dess_item, :image, :is_sale, :genre_id, :without_tax )
   end
 end
