@@ -10,8 +10,8 @@
 </table>
 <a>請求情報</a>
 <table>
-	<tr>商品合計</tr>
-	<tr>配送料</tr>
+	<tr><%= @history.total_fee %>-<%= @history.postage %></tr>
+	<tr><%= @history.postage %></tr>
 	<tr><%= @history.total_fee %></tr>
 </table>
 <a>注文内容</a>
@@ -25,12 +25,14 @@
         </tr>
     </thead>
     <tbody>
+    	<% @cart_items.each do |c| %>
     	<tr>
-			<th><%= @cart_content.item_id.item_name %></th>
-            <th><%= @cart_content.item_id.item_name %></th>
+			<th><%= c.item.item_name %></th>
+            <th><%= c.item.without_tax %></th>
             <th><%= @history_detail.quantity %></th>
-            <th><%= @cart_content.item_id.item_name %>*<%= @history_detail.quantity %></th>
+            <th><%= c.item.item_name %>*<%= @history_detail.quantity %></th>
 		</tr>
+		<% end %>
 	</tbody>
 </table>
 
