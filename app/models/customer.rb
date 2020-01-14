@@ -25,7 +25,9 @@ class Customer < ApplicationRecord
     result = update_attributes(params, *options)
     clean_up_passwords
     result
+
   end
+
 
 
    has_many :shipping_addresses, dependent: :destroy

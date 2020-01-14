@@ -43,6 +43,9 @@
                 <li class="">
                   <%= link_to " About", about_items_path, class:"glyphicon glyphicon-apple" %>
                 </li>
+                <li class="">
+                  <%= link_to " logout", destroy_admin_session_path, method: :delete, class:"glyphicon glyphicon-log-out logout" %>
+                </li>
                <% end %>
             </ul>
           </div>
