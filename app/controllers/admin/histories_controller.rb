@@ -5,6 +5,7 @@ class Admin::HistoriesController < ApplicationController
 	end
 
 	def show
+		@history = History.find(params[:id])
 	end
 
 end
