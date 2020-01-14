@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-devise_for :admins, controllers:{
-  sessions:      'admins/sessions',
-  passwords:     'admins/passwords',
-  registrations: 'admins/registrations'
+devise_for :admin, controllers:{
+  sessions:      'admin/sessions',
+  passwords:     'admin/passwords',
+  registrations: 'admin/registrations'
   }
 
   get '/customers_edit' => 'customers#edit', as: :edit_customers
@@ -67,7 +67,8 @@ devise_for :admins, controllers:{
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
     resources :genres, only: [:index, :create, :edit, :update]
-
+    get '/top' => 'items#top'
+    resources :histories
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -79,3 +80,4 @@ devise_for :admins, controllers:{
 
   #get 'admin/histories' => 'admin/histories#index'
   #get 'admin/histories/show' => 'admin/histories#show'
+end
