@@ -67,7 +67,7 @@ devise_for :admin, controllers:{
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
     resources :genres, only: [:index, :create, :edit, :update]
-
+    resources :customers
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
