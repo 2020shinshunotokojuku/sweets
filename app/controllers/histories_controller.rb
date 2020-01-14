@@ -14,7 +14,7 @@ class HistoriesController < ApplicationController
   def index
     @customer = current_customer
     @histories = @customer.histories
-    @history_details = 
+    @history_details = @histories.history_details
   end
 
   def show
