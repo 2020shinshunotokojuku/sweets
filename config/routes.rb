@@ -56,7 +56,11 @@ devise_for :admin, controllers:{
   #get 'histories', to: 'histories#index'
   #get 'histories/show', to: 'histories#information'
 #cart_contents
-  resources :cart_contents
+  resources :cart_contents do
+       collection do
+       delete 'all_destroy'
+    end
+  end
   #get 'cart_contents', to: 'cart_contents#index'
 #shipping_addresses
   resources :shipping_addresses
