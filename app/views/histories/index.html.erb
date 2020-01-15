@@ -21,8 +21,10 @@
             	<%= history.post_number %><br>
             	<%= history.address %>
             </th>
-            <th>
-            	<%= @history_details.quantity%>
+            <th><!--商品名-->
+                <% history.history_details.each do |history_detail| %>
+            	<%= history_detail.item.name %>
+                <% end %>
             </th>
             <th>
                 <%= history.total_fee %>
@@ -31,7 +33,7 @@
                 <%= history.order_status %>
             </th>
             <th>
-                <%= link_to (history),class: “btn btn-primary” %>
+                <%= link_to (history),{class: "btn btn-info"} %>
             </th>
         </tr>
     </tbody>
