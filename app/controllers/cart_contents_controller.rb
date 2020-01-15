@@ -5,6 +5,9 @@ class CartContentsController < ApplicationController
   end
 
   def update
+    @cart_contents = CartContent.find(params[:id])
+    @cart_contents.update(cart_content_params)
+    redirect_to cart_contents_path
   end
 
   def destroy
@@ -13,13 +16,20 @@ class CartContentsController < ApplicationController
     # データ(レコード)を削除
     cart_contents.destroy
     # 「カート」ページにリダイレクトする
-    redirect_to '/cart_contents'
+    redirect_to cart_contents_path
   end
 
   def all_destroy
+    current_customer.cart_contents.destroy_all
+    redirect_to root_path
   end
 
   def create
+  end
+
+  private
+  def cart_contents_params
+    params.require( :cart_content).permit( :quantity)
   end
 
 
