@@ -1,11 +1,22 @@
-<h1>配送先登録/一覧</h1>
+<h1>購入者情報入力</h1>
+
+
+
+
+<div class="field">
+    <%= f.label :支払い方法 %><br />
+    <%= f.label :クレジットカード %>
+    <%= f.radio_button :payment_method, :クレジットカード %>
+    <%= f.label :銀行振込 %>
+    <%= f.radio_button :payment_method, :銀行振込 %>
+</div>
+
+
+
+
 
 <table class="table table-bordered">
     <thead>
-        <tr>
-            <th>氏名</th>
-            <th><%= f.text_field :family_name, autofocus: true, autocomplete: "family_name"%><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name"%></th>
-        </tr>
     </thead>
         <tbody>
             <tr>
