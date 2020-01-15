@@ -1,7 +1,6 @@
 class Admin::ItemsController < ApplicationController 
 
   def top
-    History_details.where(quantity)
   end
 
   def index
