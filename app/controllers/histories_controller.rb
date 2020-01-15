@@ -1,4 +1,4 @@
-class HistoriesController < ApplicationController
+class HistoriesController < ApplicationController 
   def information
   end
 

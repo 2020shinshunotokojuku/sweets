@@ -1,4 +1,4 @@
-class Admin::ItemsController < ApplicationController
+class Admin::ItemsController < ApplicationController 
 
   def top
     History_details.where(quantity)

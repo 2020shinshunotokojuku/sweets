@@ -1,6 +1,7 @@
 class CartContentsController < ApplicationController
 
   def index
+    @cart_contents = current_customer.cart_contents
   end
 
   def update
@@ -8,14 +9,18 @@ class CartContentsController < ApplicationController
 
   def destroy
     # 下記でデータ(レコード)を1件取得
-    quantity = CartContents.find(params[:id])
+    cart_contents = CartContents.find(params[:id])
     # データ(レコード)を削除
-    quantity.destroy
+    cart_contents.destroy
     # 「カート」ページにリダイレクトする
     redirect_to '/cart_contents'
   end
 
   def all_destroy
   end
+
+  def create
+  end
+
 
 end
