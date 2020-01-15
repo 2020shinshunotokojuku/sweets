@@ -18,15 +18,23 @@
 
 <%= cart.item.without_tax * 1.08 * cart.quantity %>
 
+<!-- 下記をform_forで回す -->
+<!-- その後、cart_contentsコントローラーを記述 -->
+
 <!-- 「カートを空にする」ボタンを設置する -->
 
 <!-- 「削除する」ボタンを設置する -->
+
 <%= link_to "削除する", cart_content_path(cart.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
 <% end %>
+
+
+
 <!-- 「合計金額(税抜)」金額を表示させる -->
 
 <!-- 「買い物を続ける」ボタンを設置し、押すと「トップページ」に遷移する -->
 <!-- 下記自信ない -->
+
 <%= link_to "買い物を続ける", root_path %>
 
 
