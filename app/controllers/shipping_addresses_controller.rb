@@ -18,6 +18,7 @@ class ShippingAddressesController < ApplicationController
   def create
     # ストロングパラメーターを使用
     shipping_address = ShippingAddress.new(ship_params)
+    shipping_address.customer_id = current_customer.id
     # DBへ保存する
     shipping_address.save
     # トップ画面へリダイレクト
