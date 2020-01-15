@@ -5,7 +5,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
-    @items=Item.all
+    @items=Item.where(genre_id: true)
   end
 
   def new

@@ -1,7 +1,7 @@
 class Admin::GenresController < ApplicationController
  def index
    @genre=Genre.new
-   @genres=Genre.all
+   @genres=Genre.where(is_valid: true )
  end
  def create
  	genre=Genre.new(genre_params)
@@ -17,7 +17,6 @@ class Admin::GenresController < ApplicationController
  	@genre=Genre.find(params[:id])
  end
  def update
- 	binding.pry
  	genre=Genre.find(params[:id])
  	if params[:genre][:is_vaild] == true
  		genre.is_valid = true

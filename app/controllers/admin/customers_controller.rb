@@ -10,19 +10,17 @@ class Admin::CustomersController < ApplicationController
 
   def edit
   	@customer=Customer.with_deleted.find(params[:id])
+    pp @customer
   end
   def update
-    binding.pry
 	   customer=Customer.with_deleted.find(params[:id])
-	   if params[:customer][:deleted_at] == false
-	   customer.deleted_at = true
-     customer.restore
+	   if params[:customer][:deleted_at] == "true"
 	   customer.update(customer_params)
+     customer.restore
 	   redirect_to admin_customer_path(customer.id)
 	else
-		customer.deleted_at = false
-    customer.destroy
 		customer.update(customer_params)
+     customer.destroy
 		redirect_to admin_customer_path(customer.id)
   end
 end
