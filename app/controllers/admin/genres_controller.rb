@@ -17,6 +17,7 @@ class Admin::GenresController < ApplicationController
  	@genre=Genre.find(params[:id])
  end
  def update
+ 	binding.pry
  	genre=Genre.find(params[:id])
  	if params[:genre][:is_vaild] == true
  		genre.is_valid = true

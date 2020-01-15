@@ -18,10 +18,10 @@
 	<p>メールアドレス</p>
 	<%= f.text_field :email %>
 	<p>会員ステータス</p>
-	<%= f.radio_button :deleted_at, false %>
+	<%= f.radio_button :deleted_at ,true %>
 	<%= label_tag :deleted_at, "有効" %>
-	<%= f.radio_button :deleted_at, true %>
+	<%= f.radio_button :deleted_at ,false %>
 	<%= label_tag :deleted_at,"退会" %>
-		<%= f.submit "変更を保存する",class:"btn btn-primry" %>
+		<%= f.submit "変更を保存する",class:"btn btn-primary" %>
 	<% end %>
 </div>
