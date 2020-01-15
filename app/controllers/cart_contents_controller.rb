@@ -1,6 +1,7 @@
 class CartContentsController < ApplicationController
 
   def index
+    @cart_contents = current_customer.cart_contents
   end
 
   def update

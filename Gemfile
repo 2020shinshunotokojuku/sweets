@@ -70,3 +70,4 @@ gem "refile-mini_magick"
 gem "pry-byebug"
 # gem "ransack"
 gem "pry-rails"
+gem 'enum_help'
