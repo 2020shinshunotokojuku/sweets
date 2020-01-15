@@ -43,13 +43,9 @@ devise_for :admin, controllers:{
   #delete 'customers', to: 'customers#destory'
 #histories
   resources :histories do
-<<<<<<< HEAD
-    collection do
-=======
       collection do
       get 'information'
       get 'really'
->>>>>>> 9353467dc2e9b8fd3d7281202ab8823f8d1f0fda
       get 'thanks'
     end
   end
