@@ -42,7 +42,11 @@ devise_for :admin, controllers:{
   #get 'customers/withdraw', to: 'customers#withdraw'
   #delete 'customers', to: 'customers#destory'
 #histories
-  resources :histories
+  resources :histories do
+    collection do
+      get 'thanks'
+    end
+  end
   #get 'histories/information', to: 'histories#information'
   #get 'histories/really', to: 'histories#really'
   #post 'histories', to: 'histories#create'

@@ -1,4 +1,4 @@
-class HistoriesController < ApplicationController 
+class HistoriesController < ApplicationController
   def information
   end
 
@@ -22,4 +22,8 @@ class HistoriesController < ApplicationController
     @history_detail = @history.history_details
     @cart_items = current_customer.cart_contents
   end
+
+  def thanks
+  end
+
 end
