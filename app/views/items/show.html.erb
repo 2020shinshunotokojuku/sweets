@@ -4,9 +4,6 @@
 
 <%= render 'genre_search'%>
 
-<!-- 個数をプルダウンで選択できるようにする -->
-
-<!-- 「カートに入れる」ボタンを設置し、「カート」ページに遷移する -->
 
 		<!-- 商品画像 -->
 		<span><%= attachment_image_tag @item, :image, :fill, 300, 200 %></span><br>
@@ -16,3 +13,21 @@
 		<span><%= @item.dess_item%></span><br>
 		<!-- 商品金額 -->
 		<span><%= @item.without_tax%><%= "  円"%></span><br>
+
+<!-- 個数をプルダウンで選択できるようにする -->
+
+
+
+<%= form_for(@quantity, url: '/items') do |f| %>
+
+	<p>商品個数</p>
+	<%= f.number_field :quantity %>
+	<!-- f.hidden_fieldで画面には表示されないが、裏でパラメータを渡せる -->
+	<%= f.hidden_field :item_id, :value => @item.id %>
+
+	<%= f.submit 'カートに入れる' %>
+
+<% end %>
+
+<!-- 「カートに入れる」ボタンを設置し、「カート」ページに遷移する -->
+
