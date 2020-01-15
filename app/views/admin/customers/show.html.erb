@@ -1,1 +1,28 @@
-<h1>管理者側の会員詳細ページ</h1>
+<div class="container">
+	<h1>会員詳細画面</h1>
+	<p><span>顧客ID</span>
+	<%= @customer.id %>
+	<% if @customer.deleted_at.nil? %>
+	<span>有効会員</span>
+	<% else %>
+	<span>退会会員</span>
+	<% end %>
+	</p>
+	<p>氏名</p>
+	<%= @customer.family_name %><%= @customer.first_name %>
+	<p>フリガナ</p>
+	<%= @customer.family_name_kana %><%= @customer.first_name_kana %>
+	<p>郵便番号</p>
+	<%= @customer.post_number %>
+	<p>住所</p>
+	<%= @customer.address %>
+	<p>電話番号</p>
+	<%= @customer.tel %>
+	<p>メールアドレス</p>
+	<%= @customer.email %>
+	<p>
+	<%= link_to "編集する", edit_admin_customer_path(@customer.id) %>
+	<%= link_to "注文履歴一覧",admin_histories_path %>
+
+	</p>
+	</div>

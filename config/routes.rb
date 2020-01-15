@@ -71,12 +71,12 @@ devise_for :admin, controllers:{
   #patch 'shipping_addresses', to: 'shipping_addresses#update'
   #put 'shipping_addresses', to: 'shipping_addresses#update'
   namespace :admin do
-    resources :customers
     resources :items
     resources :histories
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
     resources :genres, only: [:index, :create, :edit, :update]
+    resources :customers
     get '/top' => 'items#top'
     resources :histories
   end

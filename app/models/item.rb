@@ -3,4 +3,6 @@ class Item < ApplicationRecord
 	has_many :cart_contents, dependent: :destroy
 	has_many :history_details ,dependent: :destroy
 	attachment :image
+	validates :item_name, presence: :true
+	validates :without_tax, presence: :true
 end

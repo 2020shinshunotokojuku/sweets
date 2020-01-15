@@ -1,19 +1,17 @@
 class Admin::GenresController < ApplicationController
  def index
    @genre=Genre.new
-   @genres=Genre.all
+   @genres=Genre.where(is_valid: true )
  end
  def create
  	genre=Genre.new(genre_params)
- 	if params[:genre][:is_vaild] == true
- 		genre.save
- 		genre.is_valid = true
-	 	redirect_to admin_genres_path
-	 else
-	 	genre.is_valid = false
-	 	genre.save
-	 	redirect_to admin_genres_path
-	 end
+ 	if genre.save
+		redirect_to admin_genres_path
+	else
+		@genre=Genre.new
+  	    @genres=Genre.all
+		render :index
+	end
  end
  def edit
  	@genre=Genre.find(params[:id])
