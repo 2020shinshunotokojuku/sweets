@@ -1,6 +1,7 @@
 class Admin::CustomersController < ApplicationController
-
+before_action :authenticate_admin!
   def index
+    #with_deleted 退会済み会員関係なくデータ取得
 	 @customers=Customer.with_deleted.all
   end
 
@@ -10,9 +11,11 @@ class Admin::CustomersController < ApplicationController
 
   def edit
   	@customer=Customer.with_deleted.find(params[:id])
-    pp @customer
+    # pp @customer  メンターさんが入れて便利な機能と思われる
   end
   def update
+    # edit.htmlラジオボタンにてtrue or false 選択
+    # trueの場合会員復活　false=退会処理
 	   customer=Customer.with_deleted.find(params[:id])
 	   if params[:customer][:deleted_at] == "true"
 	   customer.update(customer_params)
