@@ -1,11 +1,11 @@
 class Admin::CustomersController < ApplicationController
 
   def index
-	@customers=Customer.with_deleted.all
+	 @customers=Customer.with_deleted.all
   end
 
   def show
-	@customer=Customer.with_deleted.find(params[:id])
+	    @customer=Customer.with_deleted.find(params[:id])
   end
 
   def edit
