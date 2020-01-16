@@ -1,6 +1,8 @@
 class Admin::ItemsController < ApplicationController
 
   def top
+    range=Date.yesterday.beginning_of_day..Date.yesterday.end_of_day
+    @historys=History.where(created_at: range)
   end
 
   def index
