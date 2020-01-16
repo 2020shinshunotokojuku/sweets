@@ -42,7 +42,13 @@ devise_for :admin, controllers:{
   #get 'customers/withdraw', to: 'customers#withdraw'
   #delete 'customers', to: 'customers#destory'
 #histories
-  resources :histories
+  resources :histories do
+      collection do
+      get 'information'
+      get 'really'
+      get 'thanks'
+    end
+  end
   #get 'histories/information', to: 'histories#information'
   #get 'histories/really', to: 'histories#really'
   #post 'histories', to: 'histories#create'
@@ -50,7 +56,11 @@ devise_for :admin, controllers:{
   #get 'histories', to: 'histories#index'
   #get 'histories/show', to: 'histories#information'
 #cart_contents
-  resources :cart_contents
+  resources :cart_contents do
+       collection do
+       delete 'all_destroy'
+    end
+  end
   #get 'cart_contents', to: 'cart_contents#index'
 #shipping_addresses
   resources :shipping_addresses
@@ -61,12 +71,12 @@ devise_for :admin, controllers:{
   #patch 'shipping_addresses', to: 'shipping_addresses#update'
   #put 'shipping_addresses', to: 'shipping_addresses#update'
   namespace :admin do
-    resources :customers
     resources :items
     resources :histories
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
     resources :genres, only: [:index, :create, :edit, :update]
+    resources :customers
     get '/top' => 'items#top'
     resources :histories
   end

@@ -19,4 +19,14 @@
 
 
 <h1>Item</h1>
-<!-- 下記に「商品画像」「商品名」「金額」を3列で表示させる -->
+<!-- 下記に「商品画像」「商品名」「金額」を3列で表示させる  -->
+<!-- 画像をクリックすると「商品詳細ページに遷移する」 -->
+<% @items.each do |item| %>
+	<span><%= link_to item_path(item) do  %>
+		<%= attachment_image_tag item, :image, :fill, 300, 200 %></span><br>
+	<% end %>
+
+	<span><%= item.item_name%></span><br>
+
+	<span><%= item.without_tax%><%= "  円"%></span><br>
+<% end %>

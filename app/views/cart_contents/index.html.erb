@@ -3,30 +3,43 @@
 
 <h2>ショッピングカート</h2>
 
-<!-- 下記にカートに追加された商品情報を表示させる -->
-
-<p>商品名</p>
-<!-- 「商品画像」表示 -->
-
-<p>単価(税込)</p>
-
-<p>数量</p>
-<!-- デフォルトで「1」が表示され、「変更」ボタンを押すと数量を変更できる -->
-
-<p>小計</p>
-
-
 <!-- 「カートを空にする」ボタンを設置する -->
+<%= link_to "カートを空にする", all_destroy_cart_contents_path(@cart_contents), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+
+<!-- 下記にカートに追加された商品情報を表示させる -->
+<% sum = 0 %>
+
+<% @cart_contents.each do |cart| %>
+<!--イメージ-->
+<%= attachment_image_tag cart.item, :image, :fill, 300, 200%>
+<!-- 名前表示 -->
+<%= cart.item.item_name %>
+<!-- 単価表示 -->
+<%= cart.item.without_tax%>
+<!-- デフォルトで「1」が表示され、「変更」ボタンを押すと数量を変更できる -->
+<%= form_for(cart) do |f| %>
+<%= f.text_field :quantity, autofocus: true, autocomplete: "quantity"%>
+<%= f.submit '変更',class: "btn btn-primary col-xs-12" %>
+<% end %>
+<%= cart.quantity %>
+<!-- 小計 -->
+<%= price=cart.item.without_tax * 1.08 * cart.quantity %>
 
 <!-- 「削除する」ボタンを設置する -->
-<%= link_to "削除する", quantity_path(quantity.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+
+<%= link_to "削除する", cart_content_path(cart.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+
+<% sum = sum+price %>
+
+<% end %>
+
+<!-- 「買い物を続ける」ボタンを設置し、押すと「トップページ」に遷移する -->
+
+<%= link_to "買い物を続ける", root_path,{class: "btn btn-info"} %>
 
 <!-- 「合計金額(税抜)」金額を表示させる -->
 
-<!-- 「買い物を続ける」ボタンを設置し、押すと「トップページ」に遷移する -->
-<!-- 下記自信ない -->
-<%= link_to "買い物を続ける", /_path(shipping_address.id) %>
-
-
+<%= sum %>
 
 <!-- 「情報入力に進む」ボタンを設置、押すと「購入情報入力ページに遷移する」 -->
+<%= link_to "情報入力に進む",  information_histories_path,{class: "btn btn-info"} %>

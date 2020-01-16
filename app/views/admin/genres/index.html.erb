@@ -1,20 +1,22 @@
 <div class="container">
 	<h2>ジャンル追加・一覧画面</h2>
-	<span>ジャンル</span>
 	<%= form_for(@genre,url:"/admin/genres") do |f| %>
+	<b>ジャンル</b>
 	<%= f.text_field :name %>
 	<%= f.radio_button :is_valid, true %>
 	<%= label_tag :is_valid, "有効" %>
 	<%= f.radio_button :is_valid, false %>
 	<%= label_tag :is_vaild,"無効" %>
-	<%= f.submit "追加",class:"btn btn-primary" %>
+	<%= f.submit "追加",class:"btn btn-info" %>
 	<% end %>
-	<table class="table table-striped">
-		<thead>
+	<div class="row">
+		<div class="col-xs-6">
+	<table class="table margin-top">
+		<thead style="background-color: #aaa">
 			<tr>
 				<th>ジャンル</th>
 				<th>状態</th>
-				<th>edit</th>
+				<th></th>
 			</tr>
 		</thead>
 			<tbody>
@@ -27,8 +29,9 @@
 					<%if genre.is_valid==true %>
 						<p>有効</p>
 					<% else %>
-						<p>無効<p>
+						<p>無効</p>
 					<%end%>
+				</td>
 				<td>
 					<%= link_to "編集する",edit_admin_genre_path(genre.id),class:"btn btn-primary" %>
 				</td>
@@ -37,3 +40,8 @@
 		<% end %>
 	</table>
 </div>
+
+</div>
+
+</div>
+

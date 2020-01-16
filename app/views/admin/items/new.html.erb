@@ -1,22 +1,20 @@
-<h1>商品　新規登録画面</h1>
+<div class="container">
+	<h1>商品　新規登録画面</h1>
+	<%= form_for(@item,url:admin_items_path, method: :get) do |f| %>
+	<%= f.attachment_field :image %>
+	<p>商品名</p>
+	<%= f.text_field :item_name %>
+	<p>商品説明</p>
+	<%= f.text_area :dess_item %>
+	<p>ジャンル</p>
+	<%= f.collection_select(:genre_id, Genre.all, :id, :name) %>
+	<div><p>ステータスバー</p></div>
+	<p>税抜き価格</p>
+	<%= f.number_field :without_tax %>
+	<span>円</span>
+	<p>販売ステータス</p>
+	<%= f.select :is_sale,[["販売中",true],["売り切れ",false]] %>
 
-
-<%= form_for(@item,url:admin_items_path) do |f| %>
-<%= f.attachment_field :image %>
-
-
-<p>商品名</p>
-<%= f.text_field :item_name %>
-<p>商品説明</p>
-<%= f.text_area :dess_item %>
-<p>ジャンル</p>
-<%= f.collection_select(:genre_id, Genre.all, :id, :name) %>
-<div><p>ステータスバー</p></div>
-<p>税抜き価格</p>
-<%= f.number_field :without_tax %>
-<span>円</span>
-<p>販売ステータス</p>
-<%= f.select :is_sale,[["販売中",true],["売り切れ",false]] %>
-
-<%= f.submit "新規登録" %>
-<% end %>
+	<%= f.submit "新規登録" %>
+	<% end %>
+</div>
