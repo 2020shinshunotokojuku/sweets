@@ -10,27 +10,39 @@
   <%= @history.payment_method %>
   <h2>注文ステータス</h2>
   <%= @history.order_status %>
+  <%= select :order_status, :name, History.order_statuses.keys.to_a %>
 </row>
 <row>
 <div class="col-xs-8">
 	<table class="table">
 	<thead>
 		<tr>
+			<!-- 履歴に紐付いた履歴詳細の表示 -->
+			<% @history.history_details.each do |detail| %>
 			<th>商品名</th>
+			<%= detail.item.item_name %>
 			<th>単価(税込)</th>
+			<%= detail.price %>
 			<th>数量</th>
+			<%= detail.quantity %>
 			<th>小計</th>
+			<%= detail.item.without_tax %>
 			<th>製作ステータス</th>
+			<%= detail.production_status %>
 		</tr>
 	</thead>
+	<% end %>
 
 </table>
 </div>
 <div class="col-xs-4">
   <h4>商品合計</h4>
+
   <h4>送料</h2>
+
   <h4>請求金額合計</h4>
 </div>
+
 
 </row>
 </container>
