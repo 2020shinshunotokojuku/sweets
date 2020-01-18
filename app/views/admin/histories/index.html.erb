@@ -19,7 +19,8 @@
 		<tr>
 			<td>
 				<%= link_to admin_history_path(history) do %>
-				<%= history.created_at %>
+				<%= history.created_at.strftime("%Y-%m-%d %H:%M") %>
+
 				<% end %>
 			</td>
 			<td>

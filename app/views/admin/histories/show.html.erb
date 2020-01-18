@@ -1,16 +1,29 @@
 <h1>注文詳細画面</h1>
 <container>
 <row>
-  <h2>購入者</h2>
-  <%= @history.customer.family_name + @history.customer.first_name %>
-  <h2>配送先</h2>
-  <%= @history.address %>
-  <%= @history.name %>
-  <h2>支払方法</h2>
-  <%= @history.payment_method %>
-  <h2>注文ステータス</h2>
-  <%= @history.order_status %>
+<table>
+<tr>
+  <th><font size="4">購入者</font></th>
+  <td><font size="4"><%= @history.customer.family_name + @history.customer.first_name %></font></td>
+</tr>
+<tr>
+  <th><font size="4">配送先</font></th>
+  <td><font size="4"><%= @history.address %></td>
+  <tr><%= @history.name %></font></tr>
+ </tr>
+<tr>
+  <th><font size="4">支払方法</font></th>
+ <td><font size="4"><%= @history.payment_method %></font></td>
+</tr>
+<tr>
+  <th><font size="4">注文ステータス</font></th>
+  <td><font size="4"><%= @history.order_status %>
   <%= select :order_status, :name, History.order_statuses.keys.to_a %>
+
+  <%= link_to "更新", "#", class: "btn btn-primary" %></font></td>
+
+</tr>
+</table>
 </row>
 <row>
 <div class="col-xs-8">
@@ -29,6 +42,7 @@
 			<%= detail.item.without_tax %>
 			<th>製作ステータス</th>
 			<%= detail.production_status %>
+			<%= select :production_status, :name, History.production_status.keys.to_a %>
 		</tr>
 	</thead>
 	<% end %>

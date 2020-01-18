@@ -1,0 +1,11 @@
+ja:
+  enum:
+    order_status:
+      status:
+        nyuukinnmati: 入金待ち
+        nyuukinnkakuninn: 入金確認
+        seisakutyuu: 製作中
+        hassouzyunnbityuu: 発送準備中
+        hassouzumi: 発送済
+
+
