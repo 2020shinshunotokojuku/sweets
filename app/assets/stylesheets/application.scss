@@ -16,6 +16,189 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+
+
+
+
+.navbar-nav > li > a {
+	line-height: 50px;
+}
+
+.navbar-header {
+	height: 80px;
+}
+.navbar > .container > .navbar-header > a{
+	height: 80px;
+	line-height: 50px;
+}
+
+.navbar-brand {
+	color: #fff;
+}
+
+.head_item {
+	color: #fff;
+	font-family: Chalkduster, "Bradley Hand", Courier, "Segoe Print", sans-serif;
+	height: 80px;
+}
+
+.main-visual-text {
+	font-family: cursive;
+}
+
+.item-top-info {
+	border: double #72d7dc38;
+	padding-bottom: 30px;
+	padding-top:30px
+}
+
+.genre-search {
+	height: 300px;
+	background-color:#fff;
+	border : solid 3px #1a8e04;
+
+}
+
+.panel-title{
+    font-size: 25px;
+    background-color:#defff0;
+    text-align:center;
+
+}
+
+.list-group-item {
+	list-style: square;
+	text-align:center;
+}
+.item-top-row {
+  width: 100%;
+  height: 400px;
+  background-image: url(img/sweets1.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.item-top-text {
+  width: 75%;
+  background: rgba(0,99,0,0.3);
+  text-align: center;
+  color: #fff;
+}
+
+.footer {
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 80px;
+    background-color: #d0e4e2;
+}
+
+.footer > .container {
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+.h3_space {
+	padding-bottom: 90px;
+}
+
+.genre-search-padding{
+	padding-top: 30px
+}
+
+.main-visual {
+  width: 100%;
+  height: 400px;
+  background-image: url(img/mv.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.main-visual-about {
+	width: 100%;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+}
+
+.main-visual-content {
+  width: 40%;
+  height: 400px;
+  background: rgba(0,0,0,0.5);
+  text-align: center;
+  padding-top: 105px;
+}
+
+.main-visual-text {
+  color: #fff;
+}
+
+.main-visual-name {
+  color: #fff;
+  margin-top: 30px;
+}
+
 body {
-	margin-top:80px;
+	background-color:#f5f3e9;
+}
+
+body > .container {
+    padding: 80px 15px 0;
+}
+
+.background {
+	background-color:#f5f3e9;
+	padding-top: 90px ;
+}
+
+.taitl {
+    font-family: 'Cherry Swash', cursive;
+    background-color: #f5f3e9;
+}
+
+.taitl-info {
+	padding-top: 60px ;
+	padding-bottom: 40px ;
+}
+
+.container .text-muted {
+    margin: 20px 0;
+}
+
+.my_panel {
+	background-color: #72d7dc38;
+	width: 150px;
+	border: double #72d7dc38
+}
+
+.my_table {
+	border: double #72d7dc38;
+}
+
+.my_text {
+	border: double #72d7dc38;
+	width: 450px;
+	background-color:#fff;
+}
+
+.navbar-fixed-top {
+	background-color:#034F45;
+	color: #fff;
+	font-family: Chalkduster, "Bradley Hand", Courier, "Segoe Print", sans-serif;
+    height: 80px;
+}
+
+.edit-btn {
+	height: 50px;
+	width: 200px;
+}
+.edit-btn-pd{
+	padding-bottom: 60px;
+}
+
+.btn-withdraw {
+	padding-bottom: 300px;
+}
+.btn-none-withdraw {
+	padding-top: 80px;
 }
