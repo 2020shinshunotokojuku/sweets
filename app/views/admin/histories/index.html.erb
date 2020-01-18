@@ -1,1 +1,49 @@
-<h1>管理者側の注文履歴一覧ページ</h1>
+<h1>注文一覧画面</h1>
+
+<container>
+<row>
+<div class="col-md-10 col-md-offset-1">
+<table class="table">
+	<thead>
+		<tr>
+			<th>購入日時</th>
+			<th>購入者</th>
+			<th>注文個数</th>
+			<th>注文ステータス</th>
+
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @histories.each do |history| %>
+		<tr>
+			<td>
+				<%= link_to admin_history_path(history) do %>
+				<%= history.created_at.strftime("%Y-%m-%d %H:%M") %>
+
+				<% end %>
+			</td>
+			<td>
+				<%= history.name %>
+			</td>
+			<td>
+				<% x = 0 %>
+					<% history.history_details.each do |detail| %>
+						<% detail.quantity %>
+						<% x = x + detail.quantity %>
+					<% end %>
+				<%= x %>
+			</td>
+			<td>
+				<%= history.order_status %>
+			</td>
+
+		</tr>
+
+		<% end %>
+		<%= paginate @histories, class: "paginate" %>
+	</tbody>
+</table>
+</div>
+</row>
+</container>

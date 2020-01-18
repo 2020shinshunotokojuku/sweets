@@ -1,2 +1,41 @@
-<h1>Histories#show</h1>
-<p>Find me in app/views/histories/show.html.erb</p>
+<h1>注文履歴詳細</h1>
+
+<a>注文情報</a>
+<table>
+	<% @history_detail.each do |history_detail| %>
+	<tr><%= history_detail.created_at %></tr>
+	<tr><%= history_detail.history.post_number %></tr>
+	<tr><%= history_detail.history.address %></tr>
+	<tr><%= history_detail.production_status %></tr>
+	<tr><%= history_detail.history.payment_method %></tr>
+	<% end %>
+</table>
+<a>請求情報</a>
+<table>
+	<tr><%= @history.total_fee - @history.postage %></tr>
+	<tr><%= @history.postage %></tr>
+	<tr><%= @history.total_fee %></tr>
+</table>
+<a>注文内容</a>
+<table>
+	<thead>
+        <tr>
+            <th>商品</th>
+            <th>単価(税込)</th>
+            <th>個数</th>
+            <th>小計</th>
+        </tr>
+    </thead>
+    <tbody>
+    	<% @cart_items.each do |c| %>
+    	<tr>
+			<th><%= c.item.item_name %></th>
+            <th><%= c.item.without_tax %></th>
+            <th><%= @history_detail.quantity %></th>
+            <th><%= c.item.item_name %>*<%= @history_detail.quantity %></th>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+
+

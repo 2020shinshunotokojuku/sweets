@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_08_081112) do
+ActiveRecord::Schema.define(version: 2020_01_16_101555) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 2020_01_08_081112) do
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "item_id"
+    t.integer "customer_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -43,7 +45,7 @@ ActiveRecord::Schema.define(version: 2020_01_08_081112) do
     t.string "post_number"
     t.text "address"
     t.string "tel"
-    t.integer "deleted_at", default: 0
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -60,13 +62,17 @@ ActiveRecord::Schema.define(version: 2020_01_08_081112) do
   create_table "histories", force: :cascade do |t|
     t.integer "total_fee"
     t.text "address"
-    t.integer "payment_method"
+    t.integer "payment_method", default: 1, null: false
     t.integer "postage"
     t.integer "order_status"
     t.string "post_number"
-    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "customer_id"
+    t.string "family_name"
+    t.string "first_name"
+    t.string "name"
+    t.integer "product_total"
   end
 
   create_table "history_details", force: :cascade do |t|
@@ -75,6 +81,8 @@ ActiveRecord::Schema.define(version: 2020_01_08_081112) do
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "history_id"
+    t.integer "item_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -85,6 +93,7 @@ ActiveRecord::Schema.define(version: 2020_01_08_081112) do
     t.string "item_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "genre_id"
   end
 
   create_table "shipping_addresses", force: :cascade do |t|
@@ -93,6 +102,7 @@ ActiveRecord::Schema.define(version: 2020_01_08_081112) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "customer_id"
   end
 
 end

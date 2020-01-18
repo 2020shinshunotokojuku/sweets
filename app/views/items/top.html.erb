@@ -1,2 +1,48 @@
-<h1>Items#top</h1>
-<p>Find me in app/views/items/top.html.erb</p>
+
+<div class="main-visual">
+    <div class="main-visual-content">
+      <h1 class="main-visual-text">
+        NAGANO CAKE
+      </h1>
+      <h2 class="main-visual-text">
+        2020 umami kiwami gomi
+      </h2>
+    </div>
+</div>
+
+<div class="genre-search-padding">
+</div>
+
+
+<div class= "container">
+	<div class ="row item-top-row">
+
+	  <div class ="col-xs-12 item-top-info">
+	  	<div class ="col-xs-3">
+	  	　<%= render 'genre_search' %>
+	  	</div>
+	  	<div class="col-xs-9 item-top-text">
+	  	  <h2 class ="col-xs-12">Instagramで話題</h2>
+	      <h1 class ="col-xs-12">ながのCAKE</h1>
+	      <h3 class ="col-xs-12">
+	         InstagramのDM,メール注文などはお受けできません。ご了承ください。<br>
+	          (受注生産のため、発送にお時間をいただく場合がございます。）<br>
+	          全国配送承ります。<br>
+	          </h3>
+	    </div>
+	  </div>
+	</div>
+</div>
+
+<h1>Item</h1>
+<!-- 下記に「商品画像」「商品名」「金額」を3列で表示させる  -->
+<!-- 画像をクリックすると「商品詳細ページに遷移する」 -->
+<% @items.each do |item| %>
+	<span><%= link_to item_path(item) do  %>
+		<%= attachment_image_tag item, :image, :fill, 300, 200 %></span><br>
+	<% end %>
+
+	<span><%= item.item_name%></span><br>
+
+	<span><%= item.without_tax%><%= "  円"%></span><br>
+<% end %>

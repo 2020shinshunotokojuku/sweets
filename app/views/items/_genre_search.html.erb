@@ -1,0 +1,10 @@
+<!-- 下記は「ジャンル検索」枠に表示させる -->
+<div class ="genre-search">
+<h1 class="panel-title">ジャンル検索</h1>
+
+<% @genres.each do |genre| %>
+
+<%= link_to genre.name, items_path(id: genre.id), class:"list-group-item"  %><br>
+
+<% end %>
+</div>

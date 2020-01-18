@@ -1,0 +1,20 @@
+<div class="container">
+	<h1>商品　詳細画面</h1>
+	<%= attachment_image_tag @item, :image, :fill, 60, 60, format: "jpeg" %>
+	<span>商品名</span>
+	<%= @item.item_name %>
+	<p><span>商品説明</span>
+	<%= @item.dess_item %></p>
+	<p><span>ジャンル</span>
+	<%= @item.genre.name %></p>
+	<p><span>税込み価格（税抜き価格）</span>
+	<%= @item.without_tax.to_s(:delimited) %>
+	<span>(<%= @item.without_tax.to_s(:delimited) %>)</span>円</p>
+	<p><span>販売ステータス</span>
+	<% if @item.is_sale==true %>
+	<span>販売中</span>
+	<% else %>
+	<span>売り切れ</span>
+	<% end %></p>
+	<p><%=link_to "編集する",edit_admin_item_path,class:"btn btn-primary" %></p>
+</div>

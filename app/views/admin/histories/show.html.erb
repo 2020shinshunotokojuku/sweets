@@ -1,1 +1,62 @@
-<h1>管理者側の注文履歴詳細ページ</h1>
+<h1>注文詳細画面</h1>
+<container>
+<row>
+<table>
+<tr>
+  <th><font size="4">購入者</font></th>
+  <td><font size="4"><%= @history.customer.family_name + @history.customer.first_name %></font></td>
+</tr>
+<tr>
+  <th><font size="4">配送先</font></th>
+  <td><font size="4"><%= @history.address %></td>
+  <tr><%= @history.name %></font></tr>
+ </tr>
+<tr>
+  <th><font size="4">支払方法</font></th>
+ <td><font size="4"><%= @history.payment_method %></font></td>
+</tr>
+<tr>
+  <th><font size="4">注文ステータス</font></th>
+  <td><font size="4"><%= @history.order_status %>
+  <%= select :order_status, :name, History.order_statuses.keys.to_a %>
+
+  <%= link_to "更新", "#", class: "btn btn-primary" %></font></td>
+
+</tr>
+</table>
+</row>
+<row>
+<div class="col-xs-8">
+	<table class="table">
+	<thead>
+		<tr>
+			<!-- 履歴に紐付いた履歴詳細の表示 -->
+			<% @history.history_details.each do |detail| %>
+			<th>商品名</th>
+			<%= detail.item.item_name %>
+			<th>単価(税込)</th>
+			<%= detail.price %>
+			<th>数量</th>
+			<%= detail.quantity %>
+			<th>小計</th>
+			<%= detail.item.without_tax %>
+			<th>製作ステータス</th>
+			<%= detail.production_status %>
+			<%= select :production_status, :name, History.production_status.keys.to_a %>
+		</tr>
+	</thead>
+	<% end %>
+
+</table>
+</div>
+<div class="col-xs-4">
+  <h4>商品合計</h4>
+
+  <h4>送料</h2>
+
+  <h4>請求金額合計</h4>
+</div>
+
+
+</row>
+</container>
