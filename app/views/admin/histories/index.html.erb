@@ -1,5 +1,8 @@
 <h1>注文一覧画面</h1>
 
+<container>
+<row>
+<div class="col-md-10 col-md-offset-1">
 <table class="table">
 	<thead>
 		<tr>
@@ -7,6 +10,7 @@
 			<th>購入者</th>
 			<th>注文個数</th>
 			<th>注文ステータス</th>
+
 		</tr>
 	</thead>
 
@@ -15,14 +19,14 @@
 		<tr>
 			<td>
 				<%= link_to admin_history_path(history) do %>
-				<%= histroy.created_at %>
+				<%= history.created_at %>
 				<% end %>
 			</td>
 			<td>
 				<%= history.name %>
 			</td>
 			<td>
-				<% x =　0 %>
+				<% x = 0 %>
 					<% history.history_details.each do |detail| %>
 						<% detail.quantity %>
 						<% x = x + detail.quantity %>
@@ -39,3 +43,6 @@
 		<%= paginate @histories, class: "paginate" %>
 	</tbody>
 </table>
+</div>
+</row>
+</container>
