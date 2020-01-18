@@ -1,4 +1,4 @@
-<h1>注文履歴一覧</h1> 
+<h1>注文履歴一覧</h1>
 
 <table class="table table-bordered">
     <thead>
@@ -23,10 +23,11 @@
             </th>
             <th><!--商品名-->
                 <% history.history_details.each do |history_detail| %>
-            	<%= history_detail.item.name %>
+            	   <%= history_detail.item.item_name %>
                 <% end %>
             </th>
             <th>
+                <!-- 下記が渡せていない -->
                 <%= history.total_fee %>
             </th>
             <th>

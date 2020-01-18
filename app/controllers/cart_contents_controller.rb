@@ -1,8 +1,7 @@
-class CartContentsController < ApplicationController
+class CartContentsController < ApplicationController 
 
   def index
     @cart_contents = current_customer.cart_contents
-    # @item_name = .find(params[:id])
   end
 
   def update
