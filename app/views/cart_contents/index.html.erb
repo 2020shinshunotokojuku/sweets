@@ -1,4 +1,4 @@
-<h1>カート内ページ</h1> 
+<h1>カート内ページ</h1>
 
 
 <h2>ショッピングカート</h2>
@@ -23,13 +23,13 @@
 <% end %>
 <%= cart.quantity %>
 <!-- 小計 -->
-<%= price=cart.item.without_tax * 1.1 * cart.quantity %>
+<%= price = cart.item.without_tax * 1.1 * cart.quantity %>
 
 <!-- 「削除する」ボタンを設置する -->
 
 <%= link_to "削除する", cart_content_path(cart.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
 
-<% sum = sum+price %>
+<% sum = sum + price %>
 
 <% end %>
 
@@ -39,7 +39,7 @@
 
 <!-- 「合計金額(税抜)」金額を表示させる -->
 
-<%= sum %>
+<%= sum.to_i %>
 
 <!-- 「情報入力に進む」ボタンを設置、押すと「購入情報入力ページに遷移する」 -->
 <%= link_to "情報入力に進む",  information_histories_path,{class: "btn btn-info"} %>

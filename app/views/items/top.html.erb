@@ -40,9 +40,8 @@
 <% @items.each do |item| %>
 	<span><%= link_to item_path(item) do  %>
 		<%= attachment_image_tag item, :image, :fill, 300, 200 %></span><br>
-	<% end %>
 
 	<span><%= item.item_name%></span><br>
-
+    <% end %>
 	<span><%= item.without_tax%><%= "  円"%></span><br>
 <% end %>
