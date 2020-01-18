@@ -2,15 +2,17 @@
 
 <a>注文情報</a>
 <table>
-	<tr><%= @history_detail.created_at %></tr>
-	<tr><%= @history.post_number %></tr>
-	<tr><%= @history.address %></tr>
-	<tr><%= @historyhistory_detail.production_status %></tr>
-	<tr><%= @history.payment_method %></tr>
+	<% @history_detail.each do |history_detail| %>
+	<tr><%= history_detail.created_at %></tr>
+	<tr><%= history_detail.history.post_number %></tr>
+	<tr><%= history_detail.history.address %></tr>
+	<tr><%= history_detail.production_status %></tr>
+	<tr><%= history_detail.history.payment_method %></tr>
+	<% end %>
 </table>
 <a>請求情報</a>
 <table>
-	<tr><%= @history.total_fee %>-<%= @history.postage %></tr>
+	<tr><%= @history.total_fee - @history.postage %></tr>
 	<tr><%= @history.postage %></tr>
 	<tr><%= @history.total_fee %></tr>
 </table>

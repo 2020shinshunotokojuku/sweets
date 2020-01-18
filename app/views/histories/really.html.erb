@@ -1,10 +1,86 @@
+<p>注文確認情報</p><br>
+
+
+
+
+<!-- 計算準備 -->
+<!-- 税込価格 -->
+<% tax_included = 0 %>
+
+<!-- 小計 -->
+<% subtotal = 0 %>
+
+<!-- 商品合計 -->
+<% product_total = 0 %>
+
+<!-- 送料 -->
+<% postage = 800 %>
+
+<!-- ご請求金額 -->
+<% total_fee = 0 %>
+
+
+
+
+<% @item_informations.each do |info| %>
+
+	<!-- 下記金額計算 -->
+	<!-- 単価(税込)の計算式 -->
+	<% tax_included = info.item.without_tax * 1.1 %>
+
+	<!-- 小計の計算式 -->
+	<% subtotal = tax_included * info.quantity %>
+
+	<!-- 商品合計の計算式 -->
+	<% product_total = product_total + subtotal %>
+
+	<!-- 請求金額の計算式 -->
+	<% total_fee = product_total + postage %>
+
+
+	<!-- 商品情報を表示 -->
+	<!-- 商品画像 -->
+	<%= attachment_image_tag info.item, :image, :fill, 100, 50 %><br>
+
+	<p>商品名</p>
+	<%= info.item.item_name %><br>
+
+	<!-- 単価表示 -->
+	<p>単価(税込)</p>
+	<%= tax_included %><br>
+
+	<p>数量</p>
+	<%= info.quantity %><br>
+
+	<!-- 小計 -->
+	<p>商品小計</p>
+	<%= subtotal %><br>
+
+<% end %>
+
+
+
+
+<p>送料</p><br>
+<%= postage %>
+
+
+<p>商品合計</p><br>
+<%= product_total %>
+
+
+<p>請求金額</p><br>
+<%= total_fee %>
 
 
 
 <!-- 下記は銀行の支払い方法を表示 -->
-<%= @history.payment_method %>
+<h4>支払い方法</h4>
+<%= @history.payment_method %><br>
 
-<%= @history.post_number %>
+
+<h4>お届け先</h4>
+<%= @history.post_number %><br>
 
 <%= @history.address %>
 
@@ -13,3 +89,39 @@
 <%= @history.first_name %>
 
 <%= @history.name %>
+
+
+
+
+<!-- 下記に「購入確定」ボタン設置 -->
+
+<!-- 「情報入力に進む」ボタンを設置、押すと「購入情報入力ページに遷移する」 -->
+
+<%= form_for(@history) do |f| %>
+	<!-- @historyのカラムに値が入っているものは、[:value]以下記載不要 -->
+	<%= f.hidden_field :payment_method, :value => @history.payment_method %>
+	<%= f.hidden_field :post_number, :value => @history.post_number %>
+	<%= f.hidden_field :address, :value => @history.address %>
+	<%= f.hidden_field :product_total, :value => @history.product_total %>
+	<!-- (下記)postageは本ページで初めてカラム情報を入れたため、Historyテーブルを参照しなくて良い -->
+	<%= f.hidden_field :postage, :value => postage %>
+	<%= f.hidden_field :family_name, :value => @history.family_name %>
+	<%= f.hidden_field :first_name, :value => @history.first_name %>
+	<%= f.hidden_field :name, :value => @history.name %>
+	<!-- (下記)total_feeは本ページで初めてカラム情報を入れたため、Historyテーブルを参照しなくて良い -->
+	<%= f.hidden_field :total_fee, :value => total_fee %>
+
+	<% current_customer.cart_contents.each do |cart|%>
+		<%= f.fields_for :history_details do |df|%>
+			<!-- 下記は、history_detailsに送るものを全て記載する -->
+			<%= df.hidden_field :item_id, :value => cart.item_id %>
+			<%= df.hidden_field :quantity, :value => cart.quantity %>
+			<%= df.hidden_field :price, :value => cart.item.without_tax %>
+		<% end %>
+	<% end %>
+
+<%= f.submit "購入を確定する", class: "btn btn-info" %>
+
+
+<% end %>
+
