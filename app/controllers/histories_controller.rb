@@ -1,4 +1,4 @@
-class HistoriesController < ApplicationController
+class HistoriesController < ApplicationController 
   def information
     @history = History.new
 
@@ -30,6 +30,9 @@ class HistoriesController < ApplicationController
     # 下記はShippingAddressテーブルの情報全てを持ってきているイメージ
     # ShippingAddress.find(params[:shipping_addresses][:id])はrails consoleの"shipping_addresses"=>{"id"=>"1"}を指定している
     # (上記の続き)「=>」は階層を表している それが、[:shipping_addresses][:id]の部分
+
+
+    # 下記をログインユーザーが登録した住所しか選べないようにする
       shipping_address = ShippingAddress.find(params[:shipping_addresses][:id])
       @history.address = shipping_address.address
       @history.post_number = shipping_address.post_number
