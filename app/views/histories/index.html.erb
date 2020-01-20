@@ -1,8 +1,8 @@
-<h1>注文履歴一覧</h1>
+<h1 class="heading">~注文履歴一覧~</h1>
 
 <table class="table table-bordered">
     <thead>
-        <tr>
+        <tr class="panel my_panel">
             <th>注文日</th>
             <th>配送先</th>
             <th>注文商品</th>
@@ -13,7 +13,7 @@
     </thead>
     <% @customer.histories.each do |history| %>
     <tbody>
-        <tr>
+        <tr class="my_text">
             <th>
             	<%= history.created_at %>
             </th>
