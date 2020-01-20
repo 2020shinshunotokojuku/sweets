@@ -7,7 +7,7 @@
 	<%= @item.dess_item %></p>
 	<p><span>ジャンル</span>
 	<%= @item.genre.name %></p>
-	<%= tax_in = 0 %>
+	<% tax_in = 0 %>
 	<p><span>税込み価格（税抜き価格）</span>
 	<% tax_in =@item.without_tax*1.1 %>
 	<%= tax_in.to_i %>

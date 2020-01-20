@@ -9,13 +9,13 @@ class ItemsController < ApplicationController
   	  @search = Item.ransack(params[:q])
       @items = @search.result
 	  end
-	    @genres = Genre.all
+	    @genres = Genre.where(is_valid: true)
 
   end
 
   def show
   	@item = Item.find(params[:id])
-  	@genres = Genre.all
+  	@genres = Genre.where(is_valid: true)
 
     # 下記でカートに追加する個数を決める
     # @quantity = CartContents.find(params[:id])
@@ -25,7 +25,7 @@ class ItemsController < ApplicationController
 
   def top
   	@items = Item.all
-  	@genres = Genre.all
+  	@genres = Genre.where(is_valid: true)
   end
 
   def about
