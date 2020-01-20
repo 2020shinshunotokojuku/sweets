@@ -14,7 +14,10 @@ class Admin::ItemsController < ApplicationController
   end
   def create
     item=Item.new(item_params)
-    item.save
+    # binding.pry
+    # リダイレクト先が存在しないパスに跳ぼうとしている
+    # 画像がうまく格納できていない
+    if item.save
     redirect_to admin_item_path(item.id)
   end
   def show
