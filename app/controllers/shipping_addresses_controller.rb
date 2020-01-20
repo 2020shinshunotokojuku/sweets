@@ -1,4 +1,4 @@
-class ShippingAddressesController < ApplicationController
+class ShippingAddressesController < ApplicationController 
   # 空のインスタンス変数をviewに渡す(新規配送先情報を入れるための)
   def index
     @shipping_address = ShippingAddress.new
@@ -44,7 +44,7 @@ class ShippingAddressesController < ApplicationController
   private
   # 下記は「配送先の新規登録」「配送先の編集」内での制限を記載
   def ship_params
-    params.require(:shipping_address).permit(:post_number, :address, :name)
+    params.require(:shipping_address).permit(:post_number, :address, :name, :relationship)
   end
 
 end
