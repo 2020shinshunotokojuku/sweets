@@ -1,4 +1,4 @@
-class HistoriesController < ApplicationController 
+class HistoriesController < ApplicationController
   def information
     @history = History.new
 
@@ -22,8 +22,7 @@ class HistoriesController < ApplicationController
     # 「ご自身の住所」を選択した場合
       @history.address = current_customer.address
       @history.post_number = current_customer.post_number
-      @history.family_name = current_customer.family_name
-      @history.first_name = current_customer.first_name
+      @history.name = current_customer.family_name + current_customer.first_name
 
     elsif params[:selected_address] == "登録済み住所から選択"
     # 「登録済みの住所」を選択した場合
@@ -101,7 +100,7 @@ class HistoriesController < ApplicationController
     end
 
     def history_params
-      params.require(:history).permit(:total_fee, :postage, :post_number, :address, :payment_method, :product_total, :name, :family_name, :first_name, history_details_attributes:[:item_id, :quantity, :price, :id, :_destroy])
+      params.require(:history).permit(:total_fee, :postage, :post_number, :address, :payment_method, :product_total, :name, history_details_attributes:[:item_id, :quantity, :price, :id, :_destroy])
     end
 
 end
