@@ -1,13 +1,13 @@
 <div class="container">
 	<h1>商品　新規登録画面</h1>
-	<%= form_for(@item,url:admin_items_path, method: :get) do |f| %>
+	<%= form_for(@item,url:admin_items_path) do |f| %>
 	<%= f.attachment_field :image %>
 	<p>商品名</p>
 	<%= f.text_field :item_name %>
 	<p>商品説明</p>
 	<%= f.text_area :dess_item %>
 	<p>ジャンル</p>
-	<%= f.collection_select(:genre_id, Genre.all, :id, :name) %>
+	<%= f.collection_select(:genre_id, Genre.where(is_valid: true), :id, :name) %>
 	<div><p>ステータスバー</p></div>
 	<p>税抜き価格</p>
 	<%= f.number_field :without_tax %>
