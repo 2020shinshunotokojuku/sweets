@@ -19,6 +19,8 @@ class Admin::ItemsController < ApplicationController
     # 画像がうまく格納できていない
     if item.save
     redirect_to admin_item_path(item.id)
+  else
+  end
   end
   def show
     @item=Item.find(params[:id])
