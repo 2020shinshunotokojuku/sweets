@@ -3,37 +3,37 @@
 <h2>注文情報</h2>
 <div class ="container">
 	<table class="table detail_table">
-		<% @history_detail.each do |history_detail| %>
+		<% @history_detail.first(1).each do |history_detail| %>
 		<tr>
-			<th class="panel detail_panel">
+			<th class="panel my_panel">
 				注文日
 			</th>
-			<th class="detail_text">
+			<th class="my_text">
 				<%= history_detail.created_at %>
 			</th>
 		</tr>
 		<tr>
-			<th class="panel detail_panel">
+			<th class="panel my_panel">
 			  配送先
 			</th>
-			<th class="detail_text">
+			<th class="my_text">
 				<%= history_detail.history.post_number %><br>
 				<%= history_detail.history.address %><br>
 			</th>
 		</tr>
 		<tr>
-			<th class="panel detail_panel">
+			<th class="panel my_panel">
 				支払い方法
 			</th>
-			<th class="detail_text">
+			<th class="my_text">
 				<%= history_detail.history.payment_method %>
 			</th>
 		</tr>
 		<tr>
-			<th class="panel detail_panel">
+			<th class="panel my_panel">
 				ステータス
 			</th>
-			<th class="detail_text">
+			<th class="my_text">
 				<%= history_detail.production_status %>
 			</th>
 		</tr>
@@ -44,33 +44,33 @@
 <div class ="container">
 	<table class="table detail_table">
 		<tr>
-			<th class="panel detail_panel">
+			<th class="panel my_panel">
 				商品合計
 			</th>
-			<th class="detail_text">
+			<th class="my_text">
 				<%= @history.total_fee - @history.postage %>
 			</th>
 		</tr>
 		<tr>
-			<th class="panel detail_panel">
+			<th class="panel my_panel">
 			  配送料
 			</th>
-			<th class="detail_text">
+			<th class="my_text">
 				<%= @history.postage %>
 			</th>
 		</tr>
 		<tr>
-			<th class="panel detail_panel">
+			<th class="panel my_panel">
 				ご請求額
 			</th>
-			<th class="detail_text">
+			<th class="my_text">
 				<%= @history.total_fee %>
 			</th>
 		</tr>
 	</table>
 </div>
 
-<a>注文内容</a>
+<h2>注文内容</h2>
 <table class="table table-bordered">
 	<thead>
         <tr>
@@ -84,9 +84,9 @@
     	<% @history_detail.each do |c| %>
     	<tr>
 			<th><%= c.item.item_name %></th>
-            <th><%= c.price * 1.1%></th>
+            <th><%= c.price * 1.1.to_i%></th>
             <th><%= c.quantity %></th>
-            <th><%= c.price * c.quantity * 1.1%></th>
+            <th><%= c.price * c.quantity * 1.1.to_i%></th>
 		</tr>
 		<% end %>
 	</tbody>
