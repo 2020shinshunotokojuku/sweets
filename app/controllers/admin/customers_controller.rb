@@ -2,7 +2,7 @@ class Admin::CustomersController < ApplicationController
  before_action :authenticate_admin!
   def index
     #with_deleted 退会済み会員関係なくデータ取得
-	 @customers=Customer.with_deleted.page(params[:page]).all
+	 @customers=Customer.with_deleted.page(params[:page])
   end
 
   def show

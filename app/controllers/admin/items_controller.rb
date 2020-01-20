@@ -1,7 +1,7 @@
 class Admin::ItemsController < ApplicationController
 
   def top
-    range=Date.yesterday.beginning_of_day..Date.yesterday.end_of_day
+    range=Date.today.beginning_of_day..Date.today.end_of_day
     @historys=History.where(created_at: range)
   end
 
