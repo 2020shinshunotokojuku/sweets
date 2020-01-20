@@ -16,6 +16,22 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+.item-one{
+	border: double #0f5f6338;
+	text-align:center;
+	padding-top: 10px;
+}
+
+.item-many{
+	background-color:#fff;
+}
+
+.heading{
+	background: linear-gradient(-45deg, rgba(0, 255, 200, 0.4), rgba(0, 250, 0, 0.4));
+	width :270px;
+	border: double #72d7dc38;
+	text-align:center;
+}
 .a{
     position: relative;
 	z-index: 1;
@@ -80,7 +96,8 @@
 .item-top-row {
   width: 100%;
   height: 400px;
-  background-image: url(img/cake.jpg);
+  background: linear-gradient(-45deg, rgba(246, 255, 0, .8), rgba(255, 0, 161, .8)),
+  url(img/cake.jpg);
   background-size: cover;
   background-position: center;
 }
@@ -155,7 +172,7 @@ body > .container {
 
 .background {
 	background-color:#f5f3e9;
-	padding-top: 90px ;
+	padding-top: 70px ;
 }
 
 .taitl {
@@ -190,7 +207,7 @@ body > .container {
 
 .navbar-fixed-top {
 	background-color:#034F45;
-	color: #fff;
+	color: #000;
 	font-family: Chalkduster, "Bradley Hand", Courier, "Segoe Print", sans-serif;
     height: 80px;
 }
