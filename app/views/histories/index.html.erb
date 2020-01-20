@@ -23,18 +23,17 @@
             </th>
             <th><!--商品名-->
                 <% history.history_details.each do |history_detail| %>
-            	   <%= history_detail.item.item_name %>
+            	<%= history_detail.item.item_name %>
                 <% end %>
             </th>
             <th>
-                <!-- 下記が渡せていない -->
                 <%= history.total_fee %>
             </th>
             <th>
                 <%= history.order_status %>
             </th>
             <th>
-                <%= link_to "表示する", history_path(history.id),{class: "btn btn-info"} %>
+                <%= link_to "表示する",history_path(history.id),{class: "btn btn-info"} %>
             </th>
         </tr>
     </tbody>
