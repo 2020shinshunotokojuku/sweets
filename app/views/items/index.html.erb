@@ -3,6 +3,8 @@
 <!-- 下記は「ジャンル検索」枠に表示させる -->
 <%= render 'genre_search'%>
 
+<% tax_in = 0 %>
+
 
 
 <% if @genre %>
@@ -16,13 +18,23 @@
 
 <!-- 下記に「商品画像」「商品名」「金額」を4列で表示させる -->
 <% @items.each do |item| %>
-	<span><%= link_to item_path(item) do %>
+	<span>
 		<%= attachment_image_tag item, :image, :fill, 300, 200 %></span><br>
-	<% end %>
-
+    <%= link_to item_path(item) do %>
 	<span><%= item.item_name%></span><br>
-
+<<<<<<< HEAD
+     <% end %>
 	<span><%= item.without_tax%><%= "  円"%></span><br>
+=======
+
+	<!-- 下記、計算式 -->
+	<% tax_in = item.without_tax * 1.1 %>
+
+	<span><%= tax_in.to_i %><%= "    円(税込)" %></span><br>
+
+>>>>>>> future
 <% end %>
+
+
 
 <!-- 表示件数が増えた場合に切り替えができるようにする -->

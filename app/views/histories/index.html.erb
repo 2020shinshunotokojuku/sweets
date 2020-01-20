@@ -1,4 +1,4 @@
-<h1>注文履歴一覧</h1> 
+<h1>注文履歴一覧</h1>
 
 <table class="table table-bordered">
     <thead>
@@ -23,7 +23,7 @@
             </th>
             <th><!--商品名-->
                 <% history.history_details.each do |history_detail| %>
-            	<%= history_detail.item.name %>
+            	<%= history_detail.item.item_name %>
                 <% end %>
             </th>
             <th>
@@ -33,7 +33,7 @@
                 <%= history.order_status %>
             </th>
             <th>
-                <%= link_to (history),{class: "btn btn-info"} %>
+                <%= link_to "表示する",history_path(history.id),{class: "btn btn-info"} %>
             </th>
         </tr>
     </tbody>

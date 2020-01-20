@@ -1,4 +1,4 @@
-class ShippingAddressesController < ApplicationController 
+class ShippingAddressesController < ApplicationController
   # 空のインスタンス変数をviewに渡す(新規配送先情報を入れるための)
   def index
     @shipping_address = ShippingAddress.new
