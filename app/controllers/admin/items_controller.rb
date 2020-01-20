@@ -1,12 +1,12 @@
 class Admin::ItemsController < ApplicationController
-before_action :authenticate_admin!
+
   def top
     range=Date.yesterday.beginning_of_day..Date.yesterday.end_of_day
     @historys=History.where(created_at: range)
   end
 
   def index
-    @items=Item.all
+    @items=Item.includes(:genre).where(genres:{is_valid: true}).page(params[:page]).all
   end
 
   def new

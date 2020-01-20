@@ -7,7 +7,7 @@
 	<p>商品説明</p>
 	<%= f.text_area :dess_item %>
 	<p>ジャンル</p>
-	<%= f.collection_select(:genre_id, Genre.all, :id, :name) %>
+	<%= f.collection_select(:genre_id, Genre.where(is_valid: true), :id, :name) %>
 	<div><p>ステータスバー</p></div>
 	<p>税抜き価格</p>
 	<%= f.number_field :without_tax %>
