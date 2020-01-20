@@ -82,7 +82,6 @@ class HistoriesController < ApplicationController
   def show
     @history = History.find(params[:id])
     @history_detail = @history.history_details
-    @cart_items = current_customer.cart_contents
   end
 
   def update

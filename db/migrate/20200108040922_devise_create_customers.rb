@@ -38,7 +38,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
       t.string :post_number
       t.text :address
       t.string :tel
-      t.integer :deleted_at , default: 0
+      t.datetime :deleted_at
       t.timestamps null: false
     end
 

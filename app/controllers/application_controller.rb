@@ -9,9 +9,10 @@ class ApplicationController < ActionController::Base
   end
 
 
+
   def after_sign_in_path_for(resource)
   	if admin_signed_in?
-       admin_top_path
+       admin_items_top_path
     else
        root_path
     end

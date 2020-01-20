@@ -1,10 +1,12 @@
 class Admin::ItemsController < ApplicationController
 
   def top
+    range=Date.yesterday.beginning_of_day..Date.yesterday.end_of_day
+    @historys=History.where(created_at: range)
   end
 
   def index
-    @items=Item.where(genre_id: true)
+    @items=Item.includes(:genre).where(genres:{is_valid: true}).page(params[:page]).all
   end
 
   def new
@@ -17,10 +19,6 @@ class Admin::ItemsController < ApplicationController
     # 画像がうまく格納できていない
     if item.save
     redirect_to admin_item_path(item.id)
-  else
-    @item=Item.new
-    render :new
-  end
   end
   def show
     @item=Item.find(params[:id])
