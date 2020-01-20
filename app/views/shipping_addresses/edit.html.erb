@@ -1,4 +1,4 @@
-<h1>配送先編集ページ</h1>
+<h1>配送先編集ページ</h1> 
 
 
 <%= form_for(@shipping_address) do |f|%>
@@ -11,6 +11,9 @@
 
 	<p>宛先</p>
 	<%= f.text_field :name %>
+
+	<p>関係性</p>
+	<%= f.text_field :relationship %>
 
 	<%= f.submit '編集する' %>
 
