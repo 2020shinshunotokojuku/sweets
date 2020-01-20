@@ -1,6 +1,26 @@
 <h1>注文詳細画面</h1>
+
+
+<!-- ここから -->
+
+<!-- 商品合計 -->
+<% item_total = 0 %>
+
+<!-- 送料 -->
+<% post = 800 %>
+
+<!-- ご請求金額 -->
+<% money_total = 0 %>
+
+<!-- ここまで -->
+
+
+
+
+
 <container>
 <row>
+	<table>
   <h2>購入者</h2>
   <%= @history.customer.family_name + @history.customer.first_name %>
   <h2>配送先</h2>
@@ -11,6 +31,12 @@
   <h2>注文ステータス</h2>
   <%= @history.order_status %>
   <%= select :order_status, :name, History.order_statuses.keys.to_a %>
+
+  <%= link_to "更新", "#", class: "btn btn-primary" %></font></td>
+
+</tr>
+</table>
+
 </row>
 <row>
 <div class="col-xs-8">
@@ -29,19 +55,39 @@
 			<%= detail.item.without_tax %>
 			<th>製作ステータス</th>
 			<%= detail.production_status %>
+
+			<!-- ここから -->
+
+			<% item_total = detail.price * detail.quantity * 1.1%>
+
+			<!-- ここまで -->
+
 		</tr>
 	</thead>
 	<% end %>
 
+
 </table>
 </div>
+
+
+
+<!-- ここから -->
+<!-- 下記計算式 -->
+<% money_total = item_total + post %>
+
 <div class="col-xs-4">
-  <h4>商品合計</h4>
+<h3>商品合計</h3>
+<%= item_total.floor(0).to_s(:delimited) %><%= "円" %>
 
-  <h4>送料</h2>
+<h3>送料</h3>
+<%= post %><%= "円" %>
 
-  <h4>請求金額合計</h4>
+<h3>請求金額合計</h3>
+<%= money_total.floor(0).to_s(:delimited) %><%= "円" %>
 </div>
+
+<!-- ここまで -->
 
 
 </row>
