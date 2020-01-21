@@ -22,3 +22,9 @@ $(function() {
         autoplaySpeed: 1000,
     });
 });
+
+window.onload = function () {
+    document.getElementById( "sampleBox" ).onscroll = function(){
+        getTheScrollPosition( this );
+    };
+}

@@ -23,6 +23,7 @@ devise_for :admin, controllers:{
   resources :items do
       collection do
       get 'about'
+      get 'recruit'
     end
   end
   #get 'items', to: 'items#index'
