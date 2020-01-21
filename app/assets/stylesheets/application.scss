@@ -172,7 +172,7 @@ body > .container {
 
 .background {
 	background-color:#f5f3e9;
-	padding-top: 70px ;
+	padding-top: 100px ;
 }
 
 .taitl {
@@ -220,9 +220,14 @@ body > .container {
 	padding-bottom: 60px;
 }
 
+input#q_item_name_cont {
+	box-shadow: 6px 9px black;
+}
+
 .btn-withdraw {
 	padding-bottom: 300px;
 }
 .btn-none-withdraw {
 	padding-top: 80px;
 }
+
