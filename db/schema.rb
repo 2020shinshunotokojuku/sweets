@@ -1,4 +1,4 @@
-# This file is auto-generated from the current state of the database. Instead 
+# This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
@@ -26,10 +26,10 @@ ActiveRecord::Schema.define(version: 2020_01_20_045036) do
 
   create_table "cart_contents", force: :cascade do |t|
     t.integer "quantity"
+    t.integer "customer_id"
+    t.integer "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "item_id"
-    t.integer "customer_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -62,27 +62,25 @@ ActiveRecord::Schema.define(version: 2020_01_20_045036) do
   create_table "histories", force: :cascade do |t|
     t.integer "total_fee"
     t.text "address"
-    t.integer "payment_method", default: 1, null: false
+    t.integer "payment_method", default: 0, null: false
     t.integer "postage"
-    t.integer "order_status"
+    t.integer "order_status", default: 0, null: false
     t.string "post_number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "customer_id"
-    t.string "family_name"
-    t.string "first_name"
     t.string "name"
     t.integer "product_total"
+    t.integer "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "history_details", force: :cascade do |t|
     t.integer "quantity"
-    t.integer "production_status"
+    t.integer "production_status", default: 0, null: false
     t.integer "price"
+    t.integer "item_id"
+    t.integer "history_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "history_id"
-    t.integer "item_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -91,18 +89,18 @@ ActiveRecord::Schema.define(version: 2020_01_20_045036) do
     t.string "image_id"
     t.boolean "is_sale", default: true, null: false
     t.string "item_name"
+    t.integer "genre_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "genre_id"
   end
 
   create_table "shipping_addresses", force: :cascade do |t|
     t.string "post_number"
     t.text "address"
     t.string "name"
+    t.integer "customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "customer_id"
     t.text "relationship"
   end
 

@@ -1,4 +1,4 @@
-<h1>注文履歴詳細</h1>
+<div class="heading"><h1>~注文履歴詳細~</h1></div>
 
 <h2>注文情報</h2>
 <div class ="container">
@@ -71,25 +71,27 @@
 </div>
 
 <h2>注文内容</h2>
-<table class="table table-bordered">
-	<thead>
-        <tr>
-            <th>商品</th>
-            <th>単価(税込)</th>
-            <th>個数</th>
-            <th>小計</th>
-        </tr>
-    </thead>
-    <tbody>
-    	<% @history_detail.each do |c| %>
-    	<tr>
-			<th><%= c.item.item_name %></th>
-            <th><%= c.price * 1.1.to_i%></th>
-            <th><%= c.quantity %></th>
-            <th><%= c.price * c.quantity * 1.1.to_i%></th>
-		</tr>
-		<% end %>
-	</tbody>
-</table>
+<div class ="container">
+	<table class="table table-bordered">
+		<thead>
+	        <tr>
+	            <th class="panel my_panel">商品</th>
+	            <th class="panel my_panel">単価(税込)</th>
+	            <th class="panel my_panel">個数</th>
+	            <th class="panel my_panel">小計</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	    	<% @history_detail.each do |c| %>
+	    	<tr>
+				<th class="my_text"><%= c.item.item_name %></th>
+	            <th class="my_text"><%= c.price * 1.1.to_i%></th>
+	            <th class="my_text"><%= c.quantity %></th>
+	            <th class="my_text"><%= c.price * c.quantity * 1.1.to_i%></th>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
 
 

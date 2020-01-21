@@ -42,16 +42,15 @@
 	</div>
 </div>
 
-		<div class = "main-visual-text">
-		<h1 class="text-center">
-			Item
-		</h1>
-	</div>
-		<!-- 下記に「商品画像」「商品名」「金額」を3列で表示させる  -->
-		<!-- 画像をクリックすると「商品詳細ページに遷移する」 -->
-<dix class = "container">
-	<% tax_in = 0 %>
-		<% @items.each do |item| %>
+
+<h1 class ="item-title">~Item~</h1>
+<!-- 下記に「商品画像」「商品名」「金額」を3列で表示させる  -->
+<!-- 画像をクリックすると「商品詳細ページに遷移する」 -->
+
+<% tax_in = 0 %>
+<div class ="col-xs-12 item-many">
+	<% @items.each do |item| %>
+	    <div class ="col-xs-4 item-one">
 			<span><%= link_to item_path(item) do  %>
 				<%= attachment_image_tag item, :image, :fill, 300, 200 %></span><br>
 			<% end %>
@@ -61,6 +60,8 @@
 			<% tax_in = item.without_tax * 1.1 %>
 
 			<span><%= tax_in.to_i %><%= "  円(税込)"%></span><br>
-		<% end %>
-</dix>
-</html>
+
+		</div>
+	<% end %>
+</div>
+<%= paginate @items, class: "paginate" %>
