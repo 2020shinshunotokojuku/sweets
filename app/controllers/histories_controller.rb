@@ -22,14 +22,16 @@ class HistoriesController < ApplicationController
     # 「ご自身の住所」を選択した場合
       @history.address = current_customer.address
       @history.post_number = current_customer.post_number
-      @history.family_name = current_customer.family_name
-      @history.first_name = current_customer.first_name
+      @history.name = current_customer.family_name + current_customer.first_name
 
     elsif params[:selected_address] == "登録済み住所から選択"
     # 「登録済みの住所」を選択した場合
     # 下記はShippingAddressテーブルの情報全てを持ってきているイメージ
     # ShippingAddress.find(params[:shipping_addresses][:id])はrails consoleの"shipping_addresses"=>{"id"=>"1"}を指定している
     # (上記の続き)「=>」は階層を表している それが、[:shipping_addresses][:id]の部分
+
+
+    # 下記をログインユーザーが登録した住所しか選べないようにする
       shipping_address = ShippingAddress.find(params[:shipping_addresses][:id])
       @history.address = shipping_address.address
       @history.post_number = shipping_address.post_number
@@ -80,7 +82,6 @@ class HistoriesController < ApplicationController
   def show
     @history = History.find(params[:id])
     @history_detail = @history.history_details
-    @cart_items = current_customer.cart_contents
   end
 
   def update
@@ -98,7 +99,7 @@ class HistoriesController < ApplicationController
     end
 
     def history_params
-      params.require(:history).permit(:total_fee, :postage, :post_number, :address, :payment_method, :product_total, :name, :family_name, :first_name, history_details_attributes:[:item_id, :quantity, :price, :id, :_destroy])
+      params.require(:history).permit(:total_fee, :postage, :post_number, :address, :payment_method, :product_total, :name, history_details_attributes:[:item_id, :quantity, :price, :id, :_destroy])
     end
 
 end

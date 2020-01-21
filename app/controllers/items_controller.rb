@@ -1,4 +1,4 @@
-class ItemsController < ApplicationController 
+class ItemsController < ApplicationController
 
   def index
 
@@ -6,9 +6,11 @@ class ItemsController < ApplicationController
 	  	@items = Item.where(genre_id: params[:id].to_i)
 	  	@genre = Genre.find(params[:id])
 	  else
-	  	@items = Item.all
+  	  @search = Item.ransack(params[:q])
+      @items = @search.result
 	  end
-	  @genres = Genre.all
+	    @genres = Genre.all
+
   end
 
   def show
@@ -22,7 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def top
-  	@items = Item.all
+  	@items = Item.page(params[:page])
   	@genres = Genre.all
   end
 

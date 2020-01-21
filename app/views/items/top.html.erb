@@ -1,4 +1,3 @@
-
 <div class="main-visual">
     <div class="main-visual-content">
       <h1 class="main-visual-text">
@@ -8,10 +7,17 @@
         2020 umami kiwami gomi
       </h2>
     </div>
+    <div class="a">
+	    <div class="b"><%= image_tag 'img/sweets1', class:"c" %></div>
+	    <div class="b"><%= image_tag 'img/mv', class:"c" %></div>
+	    <div class="b"><%= image_tag 'img/mon', class:"c" %></div>
+    </div>
 </div>
 
 <div class="genre-search-padding">
 </div>
+
+<% render partial: 'items/window', collection: @items %>
 
 
 <div class= "container">
@@ -34,15 +40,24 @@
 	</div>
 </div>
 
-<h1>Item</h1>
+<h1 class ="item-title">~Item~</h1>
 <!-- 下記に「商品画像」「商品名」「金額」を3列で表示させる  -->
 <!-- 画像をクリックすると「商品詳細ページに遷移する」 -->
-<% @items.each do |item| %>
-	<span><%= link_to item_path(item) do  %>
-		<%= attachment_image_tag item, :image, :fill, 300, 200 %></span><br>
+
+<% tax_in = 0 %>
+<div class ="col-xs-12 item-many">
+	<% @items.each do |item| %>
+	    <div class ="col-xs-4 item-one">
+			<span><%= link_to item_path(item) do  %>
+				<%= attachment_image_tag item, :image, :fill, 300, 200 %></span><br>
+			<% end %>
+
+			<span><%= item.item_name%></span><br>
+
+			<% tax_in = item.without_tax * 1.1 %>
+
+			<span><%= tax_in.to_i %><%= "  円(税込)"%></span><br>
+		</div>
 	<% end %>
-
-	<span><%= item.item_name%></span><br>
-
-	<span><%= item.without_tax%><%= "  円"%></span><br>
-<% end %>
+</div>
+<%= paginate @items, class: "paginate" %>

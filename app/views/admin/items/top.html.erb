@@ -1,13 +1,16 @@
+
 <h1>管理者画面</h1>
 
 
-			<table>
-				<tr>
-				<th><font size="5">本日の注文件数</font></th>
 
-					<th>
-					<td><font size="5"><%= link_to "#", admin_histories_path %></font></td>
-					</th>
-					<th><font size="5">件</font></th>
-				</tr>
-			</div>
+<h2>本日の注文件数</h2>
+<div class="container">
+	<row>
+		<div class="col-md-4 col-md-offset-4">
+		<div class="pull-left">
+		</div>
+		<%= link_to @historys.count, admin_histories_path %>
+		</div>
+	</row>
+</div>
+

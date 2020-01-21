@@ -71,3 +71,4 @@ gem "pry-byebug"
 # gem "ransack"
 gem "pry-rails"
 gem 'enum_help'
+gem 'ransack'

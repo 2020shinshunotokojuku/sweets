@@ -1,41 +1,97 @@
-<h1>注文履歴詳細</h1>
+<div class="heading"><h1>~注文履歴詳細~</h1></div>
 
-<a>注文情報</a>
-<table>
-	<% @history_detail.each do |history_detail| %>
-	<tr><%= history_detail.created_at %></tr>
-	<tr><%= history_detail.history.post_number %></tr>
-	<tr><%= history_detail.history.address %></tr>
-	<tr><%= history_detail.production_status %></tr>
-	<tr><%= history_detail.history.payment_method %></tr>
-	<% end %>
-</table>
-<a>請求情報</a>
-<table>
-	<tr><%= @history.total_fee - @history.postage %></tr>
-	<tr><%= @history.postage %></tr>
-	<tr><%= @history.total_fee %></tr>
-</table>
-<a>注文内容</a>
-<table>
-	<thead>
-        <tr>
-            <th>商品</th>
-            <th>単価(税込)</th>
-            <th>個数</th>
-            <th>小計</th>
-        </tr>
-    </thead>
-    <tbody>
-    	<% @cart_items.each do |c| %>
-    	<tr>
-			<th><%= c.item.item_name %></th>
-            <th><%= c.item.without_tax %></th>
-            <th><%= @history_detail.quantity %></th>
-            <th><%= c.item.item_name %>*<%= @history_detail.quantity %></th>
+<h2>注文情報</h2>
+<div class ="container">
+	<table class="table detail_table">
+		<% @history_detail.first(1).each do |history_detail| %>
+		<tr>
+			<th class="panel my_panel">
+				注文日
+			</th>
+			<th class="my_text">
+				<%= history_detail.created_at %>
+			</th>
+		</tr>
+		<tr>
+			<th class="panel my_panel">
+			  配送先
+			</th>
+			<th class="my_text">
+				<%= history_detail.history.post_number %><br>
+				<%= history_detail.history.address %><br>
+			</th>
+		</tr>
+		<tr>
+			<th class="panel my_panel">
+				支払い方法
+			</th>
+			<th class="my_text">
+				<%= history_detail.history.payment_method %>
+			</th>
+		</tr>
+		<tr>
+			<th class="panel my_panel">
+				ステータス
+			</th>
+			<th class="my_text">
+				<%= history_detail.production_status %>
+			</th>
 		</tr>
 		<% end %>
-	</tbody>
-</table>
+	</table>
+</div>
+<h2>請求情報</h2>
+<div class ="container">
+	<table class="table detail_table">
+		<tr>
+			<th class="panel my_panel">
+				商品合計
+			</th>
+			<th class="my_text">
+				<%= @history.total_fee - @history.postage %>
+			</th>
+		</tr>
+		<tr>
+			<th class="panel my_panel">
+			  配送料
+			</th>
+			<th class="my_text">
+				<%= @history.postage %>
+			</th>
+		</tr>
+		<tr>
+			<th class="panel my_panel">
+				ご請求額
+			</th>
+			<th class="my_text">
+				<%= @history.total_fee %>
+			</th>
+		</tr>
+	</table>
+</div>
+
+<h2>注文内容</h2>
+<div class ="container">
+	<table class="table table-bordered">
+		<thead>
+	        <tr>
+	            <th class="panel my_panel">商品</th>
+	            <th class="panel my_panel">単価(税込)</th>
+	            <th class="panel my_panel">個数</th>
+	            <th class="panel my_panel">小計</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	    	<% @history_detail.each do |c| %>
+	    	<tr>
+				<th class="my_text"><%= c.item.item_name %></th>
+	            <th class="my_text"><%= c.price * 1.1.to_i%></th>
+	            <th class="my_text"><%= c.quantity %></th>
+	            <th class="my_text"><%= c.price * c.quantity * 1.1.to_i%></th>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
 
 

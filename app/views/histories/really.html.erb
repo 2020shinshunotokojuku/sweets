@@ -1,7 +1,7 @@
-<p>注文確認情報</p><br>
+<p>注文確認情報</p><br> 
 
 
-
+<!-- 画面表示 -->
 
 <!-- 計算準備 -->
 <!-- 税込価格 -->
@@ -84,10 +84,6 @@
 
 <%= @history.address %>
 
-<%= @history.family_name %>
-
-<%= @history.first_name %>
-
 <%= @history.name %>
 
 
@@ -105,8 +101,6 @@
 	<%= f.hidden_field :product_total, :value => @history.product_total %>
 	<!-- (下記)postageは本ページで初めてカラム情報を入れたため、Historyテーブルを参照しなくて良い -->
 	<%= f.hidden_field :postage, :value => postage %>
-	<%= f.hidden_field :family_name, :value => @history.family_name %>
-	<%= f.hidden_field :first_name, :value => @history.first_name %>
 	<%= f.hidden_field :name, :value => @history.name %>
 	<!-- (下記)total_feeは本ページで初めてカラム情報を入れたため、Historyテーブルを参照しなくて良い -->
 	<%= f.hidden_field :total_fee, :value => total_fee %>
