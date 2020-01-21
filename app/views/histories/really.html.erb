@@ -39,52 +39,62 @@
 
 
 	<!-- 商品情報を表示 -->
-	<!-- 商品画像 -->
-	<%= attachment_image_tag info.item, :image, :fill, 100, 50 %><br>
+<div class ="container">
+	<table class="table my_table">
+		<thead>
+			<th class="panel my_panel">商品名</th>
+			<th class="panel my_panel">単価(税込)</th>
+			<th class="panel my_panel">数量</th>
+			<th class="panel my_panel">商品小計</th>
+		</thead>
+	    <tbody>
+	    	<tr>
 
-	<p>商品名</p>
-	<%= info.item.item_name %><br>
+				<td class="my_text"><%= attachment_image_tag info.item, :image, :fill, 100, 50 %><%= info.item.item_name %></td>
+				<td class="my_text"><%= tax_included.floor(0).to_s(:delimited) %></td>
+				<td class="my_text"><%= info.quantity.to_s %></td>
+				<td class="my_text"><%= subtotal.floor(0).to_s(:delimited) %></td>
 
-	<!-- 単価表示 -->
-	<p>単価(税込)</p>
-	<%= tax_included %><br>
-
-	<p>数量</p>
-	<%= info.quantity %><br>
-
-	<!-- 小計 -->
-	<p>商品小計</p>
-	<%= subtotal %><br>
+			</tr>
+		</tbody>
+	</table>
+</div>
 
 <% end %>
 
 
+<div class ="container">
+	<table class="table my_table">
+		<tbody>
+			<tr>
+				<th class="panel my_panel">送料</th>
+				<th class="my_text"><%= postage %></th>
+			</tr>
 
+			<tr>
+				<th class="panel my_panel">商品合計</th>
+				<th class="my_text"><%= product_total.floor(0).to_s(:delimited) %></th>
+			</tr>
 
-<p>送料</p><br>
-<%= postage %>
-
-
-<p>商品合計</p><br>
-<%= product_total %>
-
-
-<p>請求金額</p><br>
-<%= total_fee %>
+			<tr>
+				<th class="panel my_panel">請求金額</th>
+				<th class="my_text"><%= total_fee.floor(0).to_s(:delimited) %></th>
+			</tr>
+		</tbody>
+	</table>
+</div>
 
 
 
 <!-- 下記は銀行の支払い方法を表示 -->
-<h4>支払い方法</h4>
-<%= @history.payment_method %><br>
+<h4><b>支払い方法</b></h4>
+<%= "　　" %><%= @history.payment_method %><br>
 
 
-<h4>お届け先</h4>
-<%= @history.post_number %><br>
+<h4><b>お届け先</b></h4>
+<%= "　　" %><%= "〒" %><%= @history.post_number + @history.address %><br>
 
-<%= @history.address %>
-
-<%= @history.name %>
+<%= "　　" %><%= @history.name %>
 
 
 

@@ -16,6 +16,28 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+.btn-recruit{
+	float: right;
+}
+
+.cart_panel{
+	border: double #72d7dc38;
+	background-color: #72d7dc38;
+}
+
+.cart_table{
+	border: double #72d7dc38;
+}
+
+.cart-container{
+	width :400px;
+	float: right;
+}
+
+.btn-olldelete{
+	float: right;
+}
+
 .item-one{
 	border: double #0f5f6338;
 	text-align:center;
@@ -172,7 +194,7 @@ body > .container {
 
 .background {
 	background-color:#f5f3e9;
-	padding-top: 70px ;
+	padding-top: 100px ;
 }
 
 .taitl {
@@ -220,9 +242,14 @@ body > .container {
 	padding-bottom: 60px;
 }
 
+input#q_item_name_cont {
+	box-shadow: 6px 9px black;
+}
+
 .btn-withdraw {
 	padding-bottom: 300px;
 }
 .btn-none-withdraw {
 	padding-top: 80px;
 }
+
