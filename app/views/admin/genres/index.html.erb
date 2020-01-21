@@ -11,8 +11,8 @@
 	<% end %>
 	<div class="row">
 		<div class="col-xs-6">
-	<table class="table margin-top">
-		<thead style="background-color: #aaa">
+	<table class="table table-bordered">
+		<thead style="background-color: #d0e4e2;">
 			<tr>
 				<th>ジャンル</th>
 				<th>状態</th>
@@ -32,7 +32,7 @@
 						<p>無効</p>
 					<%end%>
 				</td>
-				<td>
+				<td class="text-center">
 					<%= link_to "編集する",edit_admin_genre_path(genre.id),class:"btn btn-primary" %>
 				</td>
 			</tr>
