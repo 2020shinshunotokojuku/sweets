@@ -1,11 +1,19 @@
 ja:
-  enum:
+  enums:
     order_status:
       status:
-        nyuukinnmati: 入金待ち
-        nyuukinnkakuninn: 入金確認
-        seisakutyuu: 製作中
-        hassouzyunnbityuu: 発送準備中
-        hassouzumi: 発送済
+        nyuukinnmati: "入金待ち"
+        nyuukinnkakuninn: "入金確認"
+        seisakutyuu: "製作中"
+        hassouzyunnbityuu: "発送準備中"
+        hassouzumi: "発送済"
 
 
+ja:
+  enums:
+    production_status:
+      status:
+        tyakusyuhuka: "着手不可"
+        seisakumati: "製作待ち"
+        seisakutyuu: "製作中"
+        seisakukannryou: "製作完了"

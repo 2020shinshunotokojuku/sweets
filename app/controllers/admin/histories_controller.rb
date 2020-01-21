@@ -21,5 +21,22 @@ class Admin::HistoriesController < ApplicationController
 		@histories = History.all
 	end
 
-end
+	def update
+			@history = History.find(params[:id])
+		if @history.order_status = 1
+			@history.history_details.each do |status|
+			status.production_status = 1
+			end
+			binding.pry
+			@history.update(history_details_params)
+			redirect_to admin_history_path(history)
+		else
+			redirect_to admin_history_path(history)
+		end
+	end
+	private
+	def history_detail_params
+		params.require ( :history_details).permit( :production_status)
+	end
 
+end
