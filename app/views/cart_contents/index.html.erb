@@ -5,6 +5,7 @@
 
 <!-- 下記にカートに追加された商品情報を表示させる -->
 <% sum = 0 %>
+<% kei = 0 %>
 <div class ="container">
 	<table class="table table-bordered col-xs-12">
 		<thead>
@@ -23,8 +24,9 @@
 					<%= attachment_image_tag cart.item, :image, :fill, 100, 60 %>
 					<%= cart.item.item_name %></h2>
 				</th>
-	            <th class="my_text text-center"><h2>
-	            	<%= cart.item.without_tax*1.1.to_i %></h2>
+	            <th class="my_text text-center">
+	            	<% kei = cart.item.without_tax*1.1 %>
+	            	<h2> <%= kei.floor(0).to_s(:delimited) %></h2>
 	            </th>
 	            <th class="my_text text-center"><h2>
 	            	<%= form_for(cart) do |f| %>
@@ -32,8 +34,9 @@
 	            	<%= f.submit '変更',class: "btn btn-primary " %>
 	            	<% end %></h2>
 	            </th>
-	            <th class="my_text text-center"><h2>
-	            	<%= price = cart.item.without_tax * 1.1.to_i * cart.quantity %></h2>
+	            <th class="my_text text-center">
+	            	<% price = cart.item.without_tax * 1.1 * cart.quantity %>
+	            	<h2><%= price.floor(0).to_s(:delimited) %></h2>
 	            </th>
 	            <th class="my_text text-center"><h2>
 	            	<%= link_to "削除する", cart_content_path(cart.id), method: :delete,class: "btn btn-danger ", "data-confirm" => "本当に削除しますか？" %><br></h2>

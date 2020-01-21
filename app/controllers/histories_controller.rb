@@ -48,7 +48,7 @@ class HistoriesController < ApplicationController
     # ------------------「注文情報確認」------------------
 
     @item_informations = current_customer.cart_contents
-    # @history.history_details.new
+    @history.history_details.new
 
     # ------------------「注文情報確認」------------------
   end
