@@ -27,7 +27,6 @@ class Admin::HistoriesController < ApplicationController
 			@history.history_details.each do |status|
 			status.production_status = 1
 			end
-			binding.pry
 			@history.update(history_details_params)
 			redirect_to admin_history_path(history)
 		else
