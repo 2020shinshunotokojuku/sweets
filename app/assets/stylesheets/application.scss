@@ -16,6 +16,28 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+.btn-recruit{
+	float: right;
+}
+
+.cart_panel{
+	border: double #72d7dc38;
+	background-color: #72d7dc38;
+}
+
+.cart_table{
+	border: double #72d7dc38;
+}
+
+.cart-container{
+	width :400px;
+	float: right;
+}
+
+.btn-olldelete{
+	float: right;
+}
+
 .item-one{
 	border: double #0f5f6338;
 	text-align:center;

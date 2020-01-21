@@ -43,6 +43,9 @@ class ItemsController < ApplicationController
     redirect_to '/cart_contents'
   end
 
+  def recruit
+  end
+
 
   private
 
