@@ -3,7 +3,7 @@
 	<p><span>顧客ID</span>
 	<%= @customer.id %>
 	<% if @customer.deleted_at.nil? %>
-	<span>有効会員</span>
+	<span style="background-color:#d0e4e2">有効会員</span>
 	<% else %>
 	<span>退会会員</span>
 	<% end %>

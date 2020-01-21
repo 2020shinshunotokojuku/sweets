@@ -7,8 +7,10 @@
 	<%= @item.dess_item %></p>
 	<p><span>ジャンル</span>
 	<%= @item.genre.name %></p>
+	<% tax_in = 0 %>
 	<p><span>税込み価格（税抜き価格）</span>
-	<%= @item.without_tax.to_s(:delimited) %>
+	<% tax_in =@item.without_tax*1.1 %>
+	<%= tax_in.floor(0).to_s(:delimited) %>
 	<span>(<%= @item.without_tax.to_s(:delimited) %>)</span>円</p>
 	<p><span>販売ステータス</span>
 	<% if @item.is_sale==true %>
