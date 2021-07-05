@@ -1,2 +1,41 @@
-<h1>Histories#index</h1>
-<p>Find me in app/views/histories/index.html.erb</p>
+<h1 class="heading">~注文履歴一覧~</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr class="panel my_panel">
+            <th>注文日</th>
+            <th>配送先</th>
+            <th>注文商品</th>
+            <th>支払い金額</th>
+            <th>ステータス</th>
+            <th>注文詳細</th>
+        </tr>
+    </thead>
+    <% @customer.histories.each do |history| %>
+    <tbody>
+        <tr class="my_text">
+            <th>
+            	<%= history.created_at %>
+            </th>
+            <th>
+            	<%= history.post_number %><br>
+            	<%= history.address %>
+            </th>
+            <th><!--商品名-->
+                <% history.history_details.each do |history_detail| %>
+            	<%= history_detail.item.item_name %>
+                <% end %>
+            </th>
+            <th>
+                <%= history.total_fee %>
+            </th>
+            <th>
+                <%= history.order_status %>
+            </th>
+            <th>
+                <%= link_to "表示する",history_path(history.id),{class: "btn btn-info"} %>
+            </th>
+        </tr>
+    </tbody>
+   <% end %>
+</table>

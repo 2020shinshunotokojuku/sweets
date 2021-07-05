@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
 
-devise_for :admins, controllers:{
-  sessions:      'admins/sessions',
-  passwords:     'admins/passwords',
-  registrations: 'admins/registrations'
+devise_for :admin, controllers:{
+  sessions:      'admin/sessions',
+  passwords:     'admin/passwords',
+  registrations: 'admin/registrations'
   }
+
+  get '/customers_edit' => 'customers#edit', as: :edit_customers
+  patch '/customers' => 'customers#update', as: :customer
+
   devise_for :customers, controllers: {
   sessions:      'customers/sessions',
   passwords:     'customers/passwords',
@@ -16,13 +20,22 @@ devise_for :admins, controllers:{
 
 #コントローラーごとのルーティング
 #items
-  resources :items
+  resources :items do
+      collection do
+      get 'about'
+      get 'recruit'
+    end
+  end
   #get 'items', to: 'items#index'
   #get 'items/:id', to: 'items#show'
   #root toで設定しているため必要ない
   #get '', to: 'items#top'
 #customers
-  resource :customers
+  resource :customers do
+      collection do
+      get 'withdraw'
+    end
+  end
   #get 'customers', to: 'customers#show'
   #get 'customers/edit', to: 'customers#edit'
   #patch 'customers', to: 'customers#update'
@@ -30,7 +43,13 @@ devise_for :admins, controllers:{
   #get 'customers/withdraw', to: 'customers#withdraw'
   #delete 'customers', to: 'customers#destory'
 #histories
-  resources :histories
+  resources :histories do
+      collection do
+      get 'information'
+      get 'really'
+      get 'thanks'
+    end
+  end
   #get 'histories/information', to: 'histories#information'
   #get 'histories/really', to: 'histories#really'
   #post 'histories', to: 'histories#create'
@@ -38,7 +57,11 @@ devise_for :admins, controllers:{
   #get 'histories', to: 'histories#index'
   #get 'histories/show', to: 'histories#information'
 #cart_contents
-  resources :cart_contents
+  resources :cart_contents do
+       collection do
+       delete 'all_destroy'
+    end
+  end
   #get 'cart_contents', to: 'cart_contents#index'
 #shipping_addresses
   resources :shipping_addresses
@@ -48,8 +71,16 @@ devise_for :admins, controllers:{
   #get 'shipping_addresses/edit', to: 'shipping_addresses#edit'
   #patch 'shipping_addresses', to: 'shipping_addresses#update'
   #put 'shipping_addresses', to: 'shipping_addresses#update'
-    namespace :admin do
+  namespace :admin do
+    get '/items/top' => 'items#top'
+
     resources :items
+    resources :histories
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+    resources :genres, only: [:index, :create, :edit, :update]
+    resources :customers
+    resources :histories
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -63,3 +94,4 @@ devise_for :admins, controllers:{
   #get 'admin/histories/show' => 'admin/histories#show'
 
 end
+

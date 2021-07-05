@@ -1,2 +1,60 @@
-<h1>CartContents#index</h1>
-<p>Find me in app/views/cart_contents/index.html.erb</p>
+<h2 class ="taitl heading">Shopping Cart</h2>
+
+<!-- 「カートを空にする」ボタンを設置する -->
+<%= link_to "カートを空にする", all_destroy_cart_contents_path(@cart_contents), method: :delete,class: "btn btn-danger btn-olldelete" ,"data-confirm" => "本当に削除しますか？" %><br>
+
+<!-- 下記にカートに追加された商品情報を表示させる -->
+<% sum = 0 %>
+<div class ="container">
+	<table class="table table-bordered col-xs-12">
+		<thead>
+	        <tr>
+	            <th class="panel cart_panel col-xs-4 text-center"><h4>商品</h4></th>
+	            <th class="panel cart_panel col-xs-2 text-center"><h4>単価(税込)</h4></th>
+	            <th class="panel cart_panel col-xs-2 text-center"><h4>数量</h4></th>
+	            <th class="panel cart_panel col-xs-2 text-center"><h4>小計</h4></th>
+	            <th class="panel cart_panel col-xs-2 text-center"></th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	    	<% @cart_contents.each do |cart| %>
+	    	<tr>
+				<th class="my_text"><h2>
+					<%= attachment_image_tag cart.item, :image, :fill, 100, 60 %>
+					<%= cart.item.item_name %></h2>
+				</th>
+	            <th class="my_text text-center"><h2>
+	            	<%= cart.item.without_tax*1.1.to_i %></h2>
+	            </th>
+	            <th class="my_text text-center"><h2>
+	            	<%= form_for(cart) do |f| %>
+	            	<%= f.text_field :quantity, autofocus: true, autocomplete: "quantity", :size=>"4"%>
+	            	<%= f.submit '変更',class: "btn btn-primary " %>
+	            	<% end %></h2>
+	            </th>
+	            <th class="my_text text-center"><h2>
+	            	<%= price = cart.item.without_tax * 1.1.to_i * cart.quantity %></h2>
+	            </th>
+	            <th class="my_text text-center"><h2>
+	            	<%= link_to "削除する", cart_content_path(cart.id), method: :delete,class: "btn btn-danger ", "data-confirm" => "本当に削除しますか？" %><br></h2>
+	            </th>
+			</tr>
+			<% sum = sum+price %>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+<div class ="container cart-container">
+	<table class="table cart_table col-xs-12">
+		<tr>
+			<th class="panel cart_panel col-xs-6 col-ms-3 col-md-4 col-lg-4">
+				<h3>合計金額</h3>
+			</th>
+			<th class=" col-xs-6 my_text text-center">
+				<h3><%= sum.to_i %></h3>
+			</th>
+		</tr>
+	</table>
+</div>
+<%= link_to "買い物を続ける", root_path,{class: "btn btn-info"} %><br>
+<%= link_to "情報入力に進む",  information_histories_path,{class: "btn btn-primary center-block edit-btn"} %>

@@ -1,4 +1,4 @@
-class CreateItems < ActiveRecord::Migration[5.2]
+class CreateItems < ActiveRecord::Migration[5.2] 
   def change
     create_table :items do |t|
       t.integer :without_tax
@@ -6,6 +6,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.string :image_id
       t.boolean :is_sale ,default: true, null:false
       t.string :item_name
+      t.integer :genre_id
 
       t.timestamps
     end

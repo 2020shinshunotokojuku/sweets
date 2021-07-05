@@ -4,60 +4,103 @@
     <title>Sweets</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   </head>
-<body>
-    <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-      <div class="container">
-         <div class="row">
-          <div class="bg-dark text-white">
-              <span class="text_color navbar-left big">NAGANO SWEETS</span>
+  <body>
+
+    <nav class="navbar navbar-fixed-top " role="navigation">
+      <div class="container ">
+       <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+         <span class="sr-only">Toggle navigation</span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand " href="/">NAGANO CAKE</a>
+     </div>
+
+          <div class="text-white">
+            <!-- 下記に検索窓を設置する -->
+            <div class="pull-left" style="margin-left:220px; margin-top: 35px">
+            <%= search_form_for @search, url: "/items" do |f| %>
+              <%= f.text_field :item_name_cont, placeholder: '商品名を入力してください' %>
+              <%= f.submit ("検索") %>
+            <% end %>
+            </div>
+            <div class="pull-right">
               <!-- <header class="navbar navbar-fixed-top navbar-inverse"> -->
               <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
+
               <!-- サインインしている場合の表示 -->
-               <% if customer_signed_in? %>
-               <!-- logoutを表示 -->
+               <% if admin_signed_in? %>
+
                 <li class="">
-                  <%= link_to " logout", destroy_customer_session_path, method: :delete, class:"glyphicon glyphicon-log-out logout" %>
+                  <%= link_to " ログアウト", destroy_admin_session_path, method: :delete, class:"glyphicon glyphicon-log-out logout head_item" %>
+                </li>
+                <li class="">
+                  <%= link_to "会員一覧", admin_customers_path,class:"glyphicon glyphicon-cart cart head_item" %>
+                </li>
+                <li class="">
+                  <%= link_to "ジャンル一覧", admin_genres_path,class:"glyphicon glyphicon-cart cart head_item" %>
+                </li>
+                <li class="">
+                  <%= link_to "注文履歴一覧", admin_histories_path,class:"glyphicon glyphicon-cart cart head_item" %>
+                </li>
+                <li class="">
+                  <%= link_to "商品一覧", admin_items_path,class:"glyphicon glyphicon-cart cart head_item" %>
+                </li>
+               <% elsif customer_signed_in? %>
+               <!-- logoutを表示 -->
+                <li class="center">
+                  <%= link_to " logout", destroy_customer_session_path, method: :delete, class:"glyphicon glyphicon-log-out logout head_item" %>
                 </li>
                 <li>
-                  <%= link_to 'Home', root_path ,class:"glyphicon glyphicon-home home" %>
+                  <%= link_to ' Home', root_path ,class:"glyphicon glyphicon-home home head_item" %>
                 </li>
                 <li class="">
-                  <%= link_to "$カート", cart_contents_path,class:"glyphicon glyphicon-cart cart" %>
+                  <%= link_to " Cart", cart_contents_path,class:"glyphicon glyphicon-log-in head_item" %>
                 </li>
                 <li class="">
-                  <%= link_to "マイページ", customers_path,class:"glyphicon glyphicon-cart cart" %>
+                  <%= link_to " My page", customers_path,class:"glyphicon glyphicon-log-in login head_item" %>
                 </li>
                 <% else %>
                 <!-- sign upを表示 -->
                 <li class="">
-                  <%= link_to " sign up", new_customer_registration_path, class:"glyphicon glyphicon-edit sign_up" %>
+                  <%= link_to " Sign up", new_customer_registration_path, class:"glyphicon glyphicon-edit sign_up head_item" %>
                 </li>
                 <!-- loginを表示 -->
                 <li class="">
-                  <%= link_to " login", new_customer_session_path, class:"glyphicon glyphicon-log-in sign_in" %>
+                  <%= link_to " Login", new_customer_session_path, class:"glyphicon glyphicon-log-in sign_in  head_item" %>
+                </li>
+                <li class="">
+                  <%= link_to " About", about_items_path, class:"glyphicon glyphicon-apple  head_item" %>
                 </li>
                <% end %>
             </ul>
           </div>
-        </div>
+          </div>
       </div>
     </nav>
+  <div class = "background">
+  <div class ="container">
+
 
     <%= yield %>
 
-    <footer>
-        <div class="container">
-          <div class="row">
-            <div class="col-xs-3 col-xs-offset-9">
-              <p>Copyright (C) 2020　Otokojukuc</p>
-            </div>
-          </div>
-        </div>
-      </footer>
 
+  </div>
+  </div>
+
+    <footer class="footer pull-left">
+      <div class="container">
+          <p class="text-muted">Copyright (C) 2020　Otokojukuc <%= link_to "採用情報",recruit_items_path, class:"btn btn-info button-recruit"%>
+          </p>
+      </div>
+    </footer>
   </body>
 </html>

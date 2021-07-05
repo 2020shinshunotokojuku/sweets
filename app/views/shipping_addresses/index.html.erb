@@ -1,2 +1,62 @@
-<h1>ShippingAddresses#index</h1>
-<p>Find me in app/views/shipping_addresses/index.html.erb</p>
+<h2 class="heading">配送先登録/一覧</h2> 
+
+<%= form_for(@shipping_address) do |f|%>
+<div class ="container">
+	<table class="table my_table">
+	    <tbody>
+	        <tr>
+	            <th class="panel my_panel">郵便番号</th>
+	            <th class="my_text"><%= f.number_field :post_number %></th>
+	        </tr>
+	        <tr>
+	            <th class="panel my_panel">住所</th>
+	            <th class="my_text"><%= f.text_field :address,:size=>"100" %></th>
+	        </tr>
+	        <tr>
+	            <th class="panel my_panel">宛先</th>
+	            <th class="my_text"><%= f.text_field :name %></th>
+	        </tr>
+	        <tr>
+	            <th class="panel my_panel">関係性</th>
+	            <th class="my_text"><%= f.text_field :relationship %></th>
+	        </tr>
+	    </tbody>
+	</table>
+	<%= f.submit '登録する',class:"btn btn-primary center-block edit-btn" %>
+</div>
+<% end %>
+<div class ="container">
+	<table class="table table-bordered">
+	    <thead>
+	        <tr class="panel my_panel">
+	            <th class="col-md-2">郵便番号</th>
+	            <th class="col-md-4">住所</th>
+	            <th class="col-md-2">宛名</th>
+	            <th class="col-md-2">関係性</th>
+	            <th class="col-md-2"></th>
+	        </tr>
+	    </thead>
+	    <% @shipping_addresses.each do |shipping_address| %>
+	    <tbody>
+	        <tr class="active">
+	            <th>
+	            	<%= shipping_address.post_number %>
+	            </th>
+	            <th>
+	            	<%= shipping_address.address %>
+	            </th>
+	            <th>
+	                <%= shipping_address.name %>
+	            </th>
+	            <th>
+	                <%= shipping_address.relationship %>
+	            </th>
+	            <th>
+	            	<%= link_to "編集する", edit_shipping_address_path(shipping_address.id),{class: "btn btn-success"} %>
+	            	<%= link_to "削除する", shipping_address_path(shipping_address.id), method: :delete ,class: "btn btn-danger",data: { confirm: '削除しますか？' }%>
+	            </th>
+	        </tr>
+	    </tbody>
+	   <% end %>
+	</table>
+</div>

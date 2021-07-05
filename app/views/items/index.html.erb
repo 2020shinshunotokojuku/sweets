@@ -1,2 +1,38 @@
-<h1>Items#index</h1>
-<p>Find me in app/views/items/index.html.erb</p>
+<h1>ECサイト側の商品一覧ページ</h1>
+
+<!-- 下記は「ジャンル検索」枠に表示させる -->
+<%= render 'genre_search'%>
+
+<% tax_in = 0 %>
+
+<% if @genre %>
+	<h3><%= @genre.name %></h3><br>
+<% else %>
+	<h3>全件表示</h3><br>
+<% end %>
+
+<p>（全 <%= @items.count %> 件）</p>
+
+
+<!-- 下記に「商品画像」「商品名」「金額」を4列で表示させる -->
+<% @items.each do |item| %>
+	<span><%= attachment_image_tag item, :image, :fill, 300, 200 %></span><br>
+    <%= link_to item_path(item) do %>
+	<span><%= item.item_name%></span><br>
+     <% end %>
+
+	<!-- 下記、計算式 -->
+	<% tax_in = item.without_tax * 1.1 %>
+
+	<span><%= tax_in.to_i %><%= "    円(税込)" %></span><br>
+<% end %>
+
+<!-- <style>
+.background {
+	background-color:#f5f3e9;
+	padding-top: 300px ;
+}
+
+</style> -->
+
+<!-- 表示件数が増えた場合に切り替えができるようにする -->

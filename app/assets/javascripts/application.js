@@ -12,5 +12,19 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require_tree .
+//= require jquery
+//= require bootstrap-sprockets
+$(function() {
+    $('.a').slick({
+        dots: true,
+        autoplay: true,
+        autoplaySpeed: 1000,
+    });
+});
+
+window.onload = function () {
+    document.getElementById( "sampleBox" ).onscroll = function(){
+        getTheScrollPosition( this );
+    };
+}

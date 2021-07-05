@@ -1,2 +1,29 @@
-<h1>ShippingAddresses#edit</h1>
-<p>Find me in app/views/shipping_addresses/edit.html.erb</p>
+<h2 class="heading"><h1>配送先編集ページ</h1>
+
+
+<%= form_for(@shipping_address) do |f|%>
+	<div class ="container">
+		<table class="table my_table">
+		  <tbody>
+		  	<tr>
+					配送先編集
+					<th class="panel my_panel"><p>郵便番号</p></th>
+					<th class="my_text"><%= f.number_field :post_number %></th>
+				</tr>
+				<tr>
+					<th class="panel my_panel"><p>住所</p></th>
+					<th class="my_text"><%= f.text_field :address %></th>
+				</tr>
+				<tr>
+					<th class="panel my_panel"><p>宛先</p></th>
+					<th class="my_text"><%= f.text_field :name %></th>
+				</tr>
+				<tr>
+					<th class="panel my_panel"><p>関係性</p></th>
+					<th class="my_text"><%= f.text_field :relationship %></th>
+				</tr>
+			</tbody>
+		</table>
+		<%= f.submit '編集する', class:"btn btn-primary center-block edit-btn" %>
+	</div>
+<% end %>
